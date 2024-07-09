@@ -1,4 +1,39 @@
 ---
 const { title } = Astro.props;
+
+/* Hacemos smooth scroll a través del a con href */
+
 ---
-<a class="mr-4 text-lg hover:text-gray-500 dark:hover:text-gray-500" href={'#' + title.toLowerCase()}>{title}</a>
+<a class="text-lg custom-hover" href={'#' + title.toLowerCase()}>{title}</a>
+
+<style>
+  .custom-hover {
+    display: inline-block; /* Asegura que el elemento se trate como un bloque en línea para transformaciones */
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .custom-hover:hover {
+    transform: scale(1.1);
+  }
+</style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    for (const link of links) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+
+        document.querySelector(targetId).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+        });
+    }
+  });
+
+</script>
