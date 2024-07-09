@@ -1,0 +1,41 @@
+---
+import Header from "../components/Header.astro";
+import Body from "../components/Body.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio Francisco Ferrández" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>franferrandez</title>
+  </head>
+  <body class="bg-slate-100 text-black dark:bg-gray-800 dark:text-white">
+    <Header />
+    <Body />
+    <Footer />
+  </body>
+</html>
+<style is:global>
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background: var(--background-color);
+    color: var(--color-text);
+    background-size: 224px;
+  }
+</style>

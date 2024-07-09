@@ -1,0 +1,21 @@
+---
+import Hero from "./Hero.astro";
+import Link from "./Link.astro";
+import Toggle from "./Toggle.astro";
+---
+
+<header class="mb-12">
+  <section class="flex justify-end items-center ml-4 mr-4 pt-2 pb-2">
+    <div>
+      <nav>
+        <ul class="flex items-center">
+          <li><Link title="Inicio" /></li>
+          <li><Link title="Experiencia" /></li>
+          <li><Link title="Proyectos" /></li>
+          <li><Link title="Contacto" /></li>
+          <li><Toggle /></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</header>
