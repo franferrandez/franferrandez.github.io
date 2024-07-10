@@ -30,13 +30,19 @@ import Footer from "../components/Footer.astro";
       rgb(var(--accent-light)) 30%,
       white 60%
     );
+
+    --background-color: 241, 245, 249;
+    --background-color-light: 241, 245, 249;
+    --background-color-dark: 31, 41, 55;
+
+    --text-color: 31, 41, 55;
+    --text-color-light: 31, 41, 55;
+    --text-color-dark: 241, 245, 249; 
+    
   }
 
   html {
     font-family: system-ui, sans-serif;
-    background: var(--background-color);
-    color: var(--color-text);
-    background-size: 224px;
     scroll-behavior: smooth !important;
     transition: background-color 0.5s, color 0.5s; /* Smooth transition for background and text color */
   }

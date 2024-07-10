@@ -1,5 +1,41 @@
 ---
 import Section from "./Section.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<Section title="Tecnologías"></Section>
+<Section title="Tecnologías">
+  <div class="flex justify-center">
+    <div class="grid grid-cols-3 justify-center items-center gap-5">
+      <div class="flex">
+        <a><Icon name="angular" /></a>
+      </div>
+      <div class="flex">
+        <a><Icon name="net" /></a>
+      </div>
+      <div class="flex">
+        <a><Icon name="typescript" /></a>
+      </div>
+      <div class="flex justify-center col-span-3">
+        <a><Icon class="git" name="git" /></a>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  [data-icon] {
+    font-size: 4rem;
+  }
+
+  .git {
+    font-size: 5rem;
+  }
+
+  a {
+    transition: transform 0.3s;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
+</style>
