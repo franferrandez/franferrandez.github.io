@@ -1,10 +1,8 @@
 ---
 const { title } = Astro.props;
-
-/* Hacemos smooth scroll a través del a con href */
-
+const href = title.toLowerCase();
 ---
-<a class="text-lg custom-hover" href={'#' + title.toLowerCase()}>{title}</a>
+<a class="text-lg custom-hover" href={'#' + href}>{title}</a>
 
 <style>
   .custom-hover {

@@ -13,7 +13,7 @@ import Footer from "../components/Footer.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>franferrandez</title>
   </head>
-  <body class="bg-slate-100 text-black dark:bg-gray-800 dark:text-white">
+  <body class="bg-slate-100 text-black dark:bg-gray-800 dark:text-white transition-colors duration-500">
     <Header />
     <Body />
     <Footer />
@@ -37,5 +37,7 @@ import Footer from "../components/Footer.astro";
     background: var(--background-color);
     color: var(--color-text);
     background-size: 224px;
+    scroll-behavior: smooth !important;
+    transition: background-color 0.5s, color 0.5s; /* Smooth transition for background and text color */
   }
 </style>
