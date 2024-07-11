@@ -13,12 +13,15 @@ import Footer from "../components/Footer.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>franferrandez</title>
   </head>
-  <body class="bg-slate-100 text-black dark:bg-gray-800 dark:text-white transition-colors duration-500">
+  <body
+    class="bg-slate-100 text-black dark:bg-gray-800 dark:text-white transition-colors duration-500"
+  >
     <Header />
     <Body />
     <Footer />
   </body>
 </html>
+
 <style is:global>
   :root {
     --accent: 136, 58, 234;
@@ -32,18 +35,35 @@ import Footer from "../components/Footer.astro";
     );
 
     --background-color: 241, 245, 249;
-    --background-color-light: 241, 245, 249;
-    --background-color-dark: 31, 41, 55;
-
     --text-color: 31, 41, 55;
-    --text-color-light: 31, 41, 55;
-    --text-color-dark: 241, 245, 249; 
-    
+  }
+
+  .dark {
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent-dark)),
+      rgb(var(--accent)) 30%,
+      rgb(var(--accent-light)) 60%
+    );
+
+    --background-color: 31, 41, 55;
+    --text-color: 241, 245, 249;
   }
 
   html {
     font-family: system-ui, sans-serif;
     scroll-behavior: smooth !important;
-    transition: background-color 0.5s, color 0.5s; /* Smooth transition for background and text color */
+    transition:
+      background-color 0.5s,
+      color 0.5s; /* Smooth transition for background and text color */
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box; /* 1 */
+    border-width: 0; /* 2 */
+    border-style: solid; /* 2 */
+    border-color: inherit; /* 2 */
   }
 </style>

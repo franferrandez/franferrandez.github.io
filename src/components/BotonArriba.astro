@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<a href="#inicio" class="chevron-up" id="chevron-up"><Icon name="chevron-up" /></a>
+
+<style>
+  .chevron-up {
+    position: fixed;
+    bottom: 17px;
+    right: 17px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 50%; /* Bordes redondeados */
+    color: white; /* Color del icono */
+    transition: opacity 0.3s, visibility 0.3s; /* Transición suave */
+    opacity: 0; /* Oculto por defecto */
+    visibility: hidden; /* Oculto por defecto */
+  }
+
+  .chevron-up.visible {
+    opacity: 1; /* Visible */
+    visibility: visible; /* Visible */
+  }
+
+  [data-icon] {
+    font-size: 1.25rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const chevronUp = document.getElementById('chevron-up');
+
+    if(!chevronUp) return;
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 100) { // Cambia 100 por el valor de scroll en píxeles deseado
+        chevronUp.classList.add('visible');
+      } else {
+        chevronUp.classList.remove('visible');
+      }
+    });
+  });
+</script>

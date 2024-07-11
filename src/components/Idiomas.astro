@@ -2,4 +2,37 @@
 import Section from "./Section.astro";
 ---
 
-<Section title="Idiomas"></Section>
+<Section title="Idiomas">
+  <div class="grid col-span-1 gap-5">
+    <div>
+      <div class="flex justify-between">
+        <label>Español</label>
+        <label>NATIVO</label>
+      </div>
+      <hr />
+    </div>
+    <div>
+      <div class="flex justify-between">
+        <label>Inglés</label>
+        <label>B1</label>
+      </div>
+      <hr />
+    </div>
+    <div>
+      <div class="flex justify-between">
+        <label>Valenciano</label>
+        <label>C1</label>
+      </div>
+      <hr />
+    </div>
+  </div>
+</Section>
+
+<style>
+    label {
+    /*text-wrap: balance;*/
+    margin-bottom: 1rem;
+    text-align: justify;
+    font-size: larger;
+  }
+</style>
