@@ -1,6 +1,5 @@
 ---
 import Hero from "./Hero.astro";
-import Section from "./Section.astro";
 import AboutMe from "./AboutMe.astro";
 import Tecnologias from "./Tecnologias.astro";
 import Idiomas from "./Idiomas.astro"
@@ -9,14 +8,16 @@ import Proyectos from "./Proyectos.astro"
 import Contacto from "./Contacto.astro"
 ---
 
-<div class="md:ml-52 md:mr-52 ml-9 mr-9">
-  <Hero />
+<div class="ml-9 mr-9 md:ml-52 md:mr-52">
+  <!-- <Hero /> -->
   
   <AboutMe></AboutMe>
 
+  <div class="lg:grid lg:grid-cols-2 lg:gap-16">
   <Tecnologias></Tecnologias>
 
   <Idiomas></Idiomas>
+</div>
 
   <Experiencia></Experiencia>
 

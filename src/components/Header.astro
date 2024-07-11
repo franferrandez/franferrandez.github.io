@@ -1,22 +1,52 @@
 ---
-import Link from "./Link.astro";
 import Toggle from "./Toggle.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<header class="mb-12">
-  <section class="flex justify-end mr-4 pt-2 pb-2">
+<header class="ml-9 mr-9 md:ml-52 md:mr-52 mt-4 mb-4">
+  <section class="flex items-center justify-between mb-1">
     <div>
-      <nav>
-        <ul class="flex items-center gap-8">
-          <!-- <li><Link title="Inicio" /></li> -->
-          <li><Link title="Tecnologías" /></li>
-          <li><Link title="Idiomas" /></li>
-          <li><Link title="Experiencia" /></li>
-          <li><Link title="Proyectos" /></li>
-          <!-- <li><Link title="Contacto" /></li> -->
-          <li><Toggle /></li>
-        </ul>
-      </nav>
+      <h1 class="text-2xl">Francisco Ferrández</h1>
+      <h3 class="text-sm">Full Stack Developer</h3>
+    </div>
+    <div class="flex gap-3">
+      <div class="flex gap-2">
+        <a
+          href="https://github.com/franferrandez"
+          target="_blank"
+          rel="noreferrer nopener"><Icon name="github" /></a
+        >
+        <a href="mailto:franciscoferrandezmartinez@gmail.com"
+          ><Icon name="mail" /></a
+        >
+        <a
+          href="https://www.linkedin.com/in/franferrandez/"
+          target="_blank"
+          rel="noreferrer nopener"><Icon name="linkedin" /></a
+        >
+      </div>
+      <Toggle />
     </div>
   </section>
+  <hr />
 </header>
+
+<style>
+  hr {
+    width: 100%;
+  }
+
+  [data-icon] {
+    font-size: 2rem;
+  }
+  a {
+    display: inline-block; /* Asegura que el elemento se trate como un bloque en línea para transformaciones */
+    transition:
+      transform 0.2s,
+      color 0.2s;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
+</style>
