@@ -1,0 +1,66 @@
+---
+// Props del componente
+export interface Props {
+  title: string;
+  image: string;
+  description: string;
+}
+
+const { title, image, description } = Astro.props;
+---
+
+<div class="card">
+  <img src={image} alt={title} class="card-image" />
+  <div class="card-content">
+    <h2 class="card-title">{title}</h2>
+    <p class="card-description">{description}</p>
+  </div>
+</div>
+
+<style>
+  .card {
+    border: 1px solid rgb(var(--text-background));
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(var(--text-color), 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(var(--text-color));
+  }
+
+  .card-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-content {
+    padding: 16px;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 1.5em;
+  }
+
+  .card-description {
+    margin: 16px 0;
+    font-size: 1em;
+  }
+
+  .card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+
+  .card-button:hover {
+    background-color: #0056b3;
+  }
+</style>

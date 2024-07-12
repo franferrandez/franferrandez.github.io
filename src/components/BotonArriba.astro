@@ -2,29 +2,35 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<a href="#inicio" class="chevron-up" id="chevron-up"><Icon name="chevron-up" /></a>
+<a class="chevron-up" id="chevron-up" (onC) ><Icon name="chevron-up" /></a>
 
 <style>
   .chevron-up {
     position: fixed;
-    bottom: 17px;
+    bottom: 50px;
     right: 17px;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    background-color: rgba(var(--text-color), 0.5); /* Fondo semi-transparente */
     padding: 10px; /* Espaciado interno */
     border-radius: 50%; /* Bordes redondeados */
     color: white; /* Color del icono */
-    transition: opacity 0.3s, visibility 0.3s; /* Transición suave */
-    opacity: 0; /* Oculto por defecto */
-    visibility: hidden; /* Oculto por defecto */
+    opacity: 0;
+    transition: opacity 0.6s linear;
+    cursor: pointer; /* Cambiar el cursor a manita */
+
+  }
+
+  .chevron-up:hover {
+    background-color: rgba(var(--text-color), 0.7); /* Fondo más oscuro en hover */
+
   }
 
   .chevron-up.visible {
     opacity: 1; /* Visible */
-    visibility: visible; /* Visible */
   }
 
   [data-icon] {
     font-size: 1.25rem;
+    color: rgb(var(--background-color));
   }
 </style>
 
@@ -32,10 +38,20 @@ import { Icon } from "astro-icon/components";
   document.addEventListener('DOMContentLoaded', function () {
     const chevronUp = document.getElementById('chevron-up');
 
-    if(!chevronUp) return;
+    if (!chevronUp) return;
+
+    // Agregar evento de clic para desplazamiento suave al inicio
+    chevronUp.addEventListener('click', function (event) {
+      event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Desplazamiento suave a la parte superior
+    });
 
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 100) { // Cambia 100 por el valor de scroll en píxeles deseado
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercentage = (scrollPosition / windowHeight) * 100;
+
+      if (scrollPercentage > 25) { // Mostrar el botón después del 25% de scroll
         chevronUp.classList.add('visible');
       } else {
         chevronUp.classList.remove('visible');

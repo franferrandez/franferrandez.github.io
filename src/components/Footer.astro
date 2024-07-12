@@ -2,17 +2,33 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<section>Desarrollado con Astro <Icon name="astro"></Icon> y Tailwind CSS <Icon name="tailwind"></Icon>.</section>
+<section class="flex mt-4 mb-4 justify-between items-center gap-2 px-4">
+  <div>franferrandez.</div>
+  <div class="flex items-center gap-1">
+    <span>Desarrollado con Astro</span>
+    <Icon name="astro" class="astro-icon" />
+    <span>y Tailwind CSS</span>
+    <Icon name="tailwind" class="tailwind-icon" />
+  </div>
+</section>
 
 <style>
-  section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+  :root {
+    --tailwind-color: #06b6d4; /* Color de marca para los iconos */
+    --astro-color: black;
   }
-  [data-icon] {
-    font-size: 1rem;
-    color: var(--brand-color);
+
+  .dark {
+    --astro-color: white;
+  }
+
+  .astro-icon {
+    color: var(--astro-color);
+    font-size: 1.5rem;
+  }
+
+  .tailwind-icon {
+    color: var(--tailwind-color);
+    font-size: 1.5rem;
   }
 </style>
