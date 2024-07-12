@@ -14,18 +14,19 @@ import { Icon } from "astro-icon/components";
     border-radius: 50%; /* Bordes redondeados */
     color: white; /* Color del icono */
     opacity: 0;
-    transition: opacity 0.6s linear;
     cursor: pointer; /* Cambiar el cursor a manita */
-
-  }
-
-  .chevron-up:hover {
-    background-color: rgba(var(--text-color), 0.7); /* Fondo más oscuro en hover */
-
+    transition: opacity 0.3s, visibility 0.3s; /* Transición suave */
+    opacity: 0; /* Oculto por defecto */
+    visibility: hidden; /* Oculto por defecto */
   }
 
   .chevron-up.visible {
     opacity: 1; /* Visible */
+    visibility: visible; /* Visible */
+  }
+
+  .chevron-up:hover {
+    background-color: rgba(var(--text-color), 0.7); /* Fondo más oscuro en hover */
   }
 
   [data-icon] {
