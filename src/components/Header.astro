@@ -3,14 +3,17 @@ import Toggle from "./Toggle.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<header class="ml-9 mr-9 lg:md:ml-52 lg:md:mr-52 mt-4 mb-4 ">
-  <section class="mb-1 pl-1 pr-1">
-    <div class="flex justify-center">
-      <h1 class="text-2xl">Francisco Ferrández Martínez</h1>
-    </div>
+<header class="pt-1 pb-1 bg-indigo-400 dark:bg-indigo-800 ">
+  <section class="ml-10 mr-10 mb-3">
+    
     <div class="flex items-center justify-between mt-2">
-      <h3 class="text-base">Full Stack Developer</h3>
-      <div class="flex gap-3">
+      <a href="/" class="flex flex-col logo"> <!-- Envolvemos en un <a> -->
+        <h1 class="text-2xl font-mono">FRANCISCO</h1>
+        <h1 class="text-xs font-mono">FERRÁNDEZ MARTÍNEZ</h1>
+      </a>
+
+      
+      <div class="flex gap-3 items-center">
         <div class="flex gap-2">
           <a
             href="https://github.com/franferrandez"
@@ -31,7 +34,7 @@ import { Icon } from "astro-icon/components";
     </div>
     
   </section>
-  <hr/>
+  <!-- <hr class="bg-white "/> -->
 </header>
 
 <style>
@@ -51,5 +54,14 @@ import { Icon } from "astro-icon/components";
 
   a:hover {
     transform: scale(1.1);
+  }
+
+  .logo {
+    user-select: none; /* Evita que el texto sea seleccionable */
+    text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
+  }
+  
+  .logo h1 {
+    color: inherit; /* Asegura que el color del texto se mantenga igual */
   }
 </style>

@@ -3,16 +3,16 @@ import Section from "./Section.astro";
 ---
 
 <Section title="Experiencia">
-  <div class="timeline">
+  <div class="flex flex-col timeline justify-center items-center">
     <div class="container right">
-      <div class="content dark:bg-slate-100 dark:text-black bg-gray-800 text-white">
+      <div class="content  text-black dark:text-white bg-indigo-400 dark:bg-indigo-800">
         <h2>Smurfit Kappa Iberoamericana SL</h2>
         <small>jun 2022 - dic 2022</small>
         <p>Soporte IT a la fábrica. Redes y shell scripting.</p>
       </div>
     </div>
-    <div class="container right dark:bg-slate-100 dark:text-black bg-gray-800 text-white">
-      <div class="content dark:bg-slate-100 dark:text-black bg-gray-800 text-white">
+    <div class="container right">
+      <div class="content text-black dark:text-white bg-indigo-400 dark:bg-indigo-800">
         <h2>Akra Informática Coop V</h2>
         <small>ene 2023 - actualidad</small>
         <p>Desarrollo de aplicaciones.</p>
@@ -42,63 +42,35 @@ import Section from "./Section.astro";
   .timeline::after {
     content: "";
     position: absolute;
-    width: 6px;
+    width: 20px;
     background-color: rgb(var(--text-color));
     top: 0;
     bottom: 0;
-    left: 1%;
-    margin-left: -3px;
+    border-radius: 15px;
   }
 
   /* Container around content */
   .container {
-    padding: 10px 25px;
+    padding: 30px 25px;
     position: relative;
     background-color: inherit;
+    z-index: 1;
+    width: 500px;
+    max-width: calc(100% - 2em);
+    margin: auto;
+    padding: 3em 1em;
   }
 
-  /* The circles on the timeline */
-  .container::after {
-    content: "";
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: rgb(var(--text-color));
-    border: 4px solid #ff9f55;
-    top: 15px;
-    border-radius: 50%;
-    z-index: 1;
-  }
-  
   /* Place the container to the right */
   .right {
     left: 1.5%;
-  }
-
-  /* Add arrows to the right container (pointing left) */
-  .right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 19px;
-    width: 0;
-    z-index: 1;
-    left: 15px;
-    border: medium solid rgb(var(--text-color));
-    border-width: 10px 10px 10px 0;
-    border-color: transparent rgb(var(--text-color)) transparent transparent;
-  }
-
-  /* Fix the circle for containers on the right side */
-  .right::after {
-    left: -16px;
   }
 
   /* The actual content */
   .content {
     padding: 20px 30px;
     position: relative;
-    border-radius: 6px;
+    border-radius: 25px;
   }
 
 </style>

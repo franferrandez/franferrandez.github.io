@@ -10,7 +10,7 @@ const { title, image, description } = Astro.props;
 ---
 
 <div class="card">
-  <img src={image} alt={title} class="card-image" />
+  <!-- <img src={image} alt={title} class="card-image" /> -->
   <div class="card-content">
     <h2 class="card-title">{title}</h2>
     <p class="card-description">{description}</p>
@@ -21,9 +21,10 @@ const { title, image, description } = Astro.props;
   .card {
     border: 1px solid rgb(var(--text-background));
     border-radius: 8px;
-    overflow: hidden;
     box-shadow: 0 2px 4px rgba(var(--text-color), 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+    width: 20rem;
+    height: 30rem;
   }
 
   .card:hover {
@@ -46,8 +47,9 @@ const { title, image, description } = Astro.props;
   }
 
   .card-description {
-    margin: 16px 0;
+    /* margin: 16px 0; */
     font-size: 1em;
+    
   }
 
   .card-button {
