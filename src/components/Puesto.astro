@@ -1,0 +1,50 @@
+---
+// Props del componente
+export interface Props {
+  company: string;
+  duration: string;
+  description: string;
+}
+
+const { company, duration, description } = Astro.props;
+---
+
+<div class="container">
+  <div
+    class="content text-black dark:text-white bg-indigo-400 dark:bg-indigo-800"
+  >
+    <h2>{company}</h2>
+    <small>{duration}</small>
+    <p>{description}</p>
+  </div>
+</div>
+
+<style>
+    h2 {
+    font-size: 1.5rem;
+    margin-top: 0rem;
+    width: 100%;
+  }
+
+  small {
+    font-style: italic;
+  }
+  /* Container around content */
+  .container {
+    padding: 30px 25px;
+    position: relative;
+    background-color: inherit;
+    z-index: 1;
+    width: 500px;
+    max-width: calc(100% - 2em);
+    margin: auto;
+    padding: 3em 1em;
+  }
+
+  /* The actual content */
+  .content {
+    padding: 20px 30px;
+    position: relative;
+    border-radius: 25px;
+  }
+</style>

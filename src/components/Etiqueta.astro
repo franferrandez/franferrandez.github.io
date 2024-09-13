@@ -1,0 +1,23 @@
+---
+// Props del componente
+export interface Props {
+  name: string;
+  backgroundColor?: string; // Prop opcional para el color de fondo
+  textColor?: string; // Prop opcional para el color del texto
+}
+
+const { name, backgroundColor = '#e0e0e0', textColor = '#000000' } = Astro.props; // Valores por defecto
+---
+
+<label class="etiqueta">{name}</label>
+
+<style>
+    .etiqueta {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-block;
+      box-shadow: 0 1px 2px rgba(var(--background-color)) ;
+    }
+  </style>

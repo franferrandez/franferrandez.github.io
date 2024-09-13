@@ -53,7 +53,7 @@ import { Icon } from "astro-icon/components";
       const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrollPercentage = (scrollPosition / windowHeight) * 100;
 
-      if (scrollPercentage > 25) { // Mostrar el botón después del 25% de scroll
+      if (scrollPercentage > 1) { // Mostrar el botón después del 25% de scroll
         chevronUp.classList.add('visible');
       } else {
         chevronUp.classList.remove('visible');

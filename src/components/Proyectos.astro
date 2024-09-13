@@ -1,31 +1,45 @@
 ---
 import Section from "./Section.astro";
 import Card from "./Card.astro";
+import Etiqueta from "./Etiqueta.astro";
 ---
 
 <Section title="Proyectos">
-  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+  <!-- md:grid md:grid-cols-2 md:gap-5 -->
+  <div class="flex flex-col items-center gap-5">
     <Card
       title="SGIWeb"
       image="./img/akraFACe-app.jpg"
-      description="Sistema de gestión de información diseñado para optimizar las operaciones comerciales. Este sistema permite gestionar el stock, procesar pedidos y generar facturas de manera eficiente. Desarrollado con una arquitectura de Angular en el front-end y TypeScript en el back-end, SGIWeb ofrece una interfaz de usuario moderna y una experiencia de usuario fluida, asegurando que las empresas puedan mantener un control riguroso sobre sus operaciones diarias."
-    />
-    <Card
-      title="AkraFACe"
-      image="./img/akraFACe-app.jpg"
-      description="Aplicación de escritorio especializada en la generación de facturas en formato Facturae 3.2, facilitando la presentación de estas a través del portal FACe o directamente desde la aplicación mediante integración con el mismo. La seguridad es primordial en Akra FACe, ya que requiere el uso de un certificado digital tanto para acceder a la aplicación como para firmar las facturas. Desarrollada con WinForms y .NET, esta herramienta garantiza una gestión segura y eficiente de las facturas electrónicas."
-    />
+      description="Opera tu negocio con este ERP que ofrece una interfaz de usuario moderna y una experiencia de usuario fluida, dando soporte a la automatización y gestión para que las empresas puedan mantener un control riguroso sobre sus operaciones diarias."
+    >
+      <Etiqueta name="Angular" />
+      <Etiqueta name=".NET" />
+    </Card>
     <Card
       title="AkraVeriFactu"
       image="./img/akraFACe-app.jpg"
-      description="Aplicación de escritorio diseñada para alinearse con el sistema Veri*Factu presentado por Hacienda. Este software facilita el cumplimiento de las normativas fiscales al proporcionar una plataforma para la gestión y presentación de documentos fiscales. Con una base en WinForms y .NET, AkraVeriFactu ofrece una solución robusta y fiable para las empresas que necesitan mantenerse al día con las regulaciones fiscales."
-    />
+      description="Facilita el cumplimiento de las normativas fiscales al proporcionar una plataforma para la gestión y presentación de documentos fiscales. AkraVeriFactu ofrece una solución robusta y fiable para las empresas que necesitan mantenerse al día con las regulaciones fiscales."
+    >
+      <Etiqueta name="WinForms" />
+      <Etiqueta name=".NET" /></Card
+    >
+    <Card
+      title="AkraFACe"
+      image="./img/akraFACe-app.jpg"
+      description="Gestiona segura y eficientemente tus facturas electrónicas. Facilitando la presentación de éstas a través de una aplicación aplicación integrada o desde el portal FACe."
+    >
+      <Etiqueta name="WinForms" />
+      <Etiqueta name=".NET" /></Card
+    >
     <Card
       title="MailManager"
       image="./img/akraFACe-app.jpg"
-      description="Aplicación de escritorio que automatiza la gestión de correos electrónicos. Utilizando la API de Outlook, esta herramienta inicia procesos en segundo plano para buscar correos electrónicos no leídos en la bandeja de entrada y generar respuestas automáticas. Desarrollada con WinForms y .NET, MailManager mejora la eficiencia en la gestión de correos electrónicos, ahorrando tiempo y reduciendo la carga de trabajo manual para los usuarios."
-    />
-    <Card
+      description="Automatiza la gestión de correos electrónicos. Esta herramienta busca correos electrónicos no leídos en la bandeja de entrada para generar respuestas automáticas."
+    >
+      <Etiqueta name="WinForms" />
+      <Etiqueta name=".NET" /></Card
+    >
+    <!-- <Card
       title="Akra x Google"
       image="./img/akraFACe-app.jpg"
       description="Módulo integrado dentro de una aplicación de facturación que replica las interfaces de Google Tasks y Google Calendar. Este módulo permite a los usuarios organizar su agenda con mayor flexibilidad, combinando la gestión de tareas y eventos en una sola plataforma. Desarrollado con WinForms y VB, Akra x Google facilita la planificación y organización personal y profesional, integrándose perfectamente con las herramientas de Google para una experiencia de usuario coherente y eficiente."
@@ -34,6 +48,24 @@ import Card from "./Card.astro";
       title="Módulo alquiler"
       image="./img/akraFACe-app.jpg"
       description="Ampliación de código que añade un completo sistema de gestión de alquileres y facturación a una aplicación ya existente de compra y venta de inmuebles. Este módulo está diseñado para integrarse sin problemas en la estructura de la aplicación original, proporcionando funcionalidades avanzadas para la administración de propiedades en alquiler. Desarrollado con WinForms y VisualBasic, el Módulo de Alquiler permite gestionar contratos de arrendamiento, seguimiento de pagos de alquiler, generación de facturas y reportes financieros, ofreciendo una solución integral para la gestión inmobiliaria tanto de compra y venta como de alquiler."
-    />
+    /> -->
   </div>
 </Section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible'); // Opcional: Puedes mantenerlo visible una vez aparezca
+      }
+    });
+  });
+
+  // Selecciona todas las tarjetas
+  const cards = document.querySelectorAll('.card');
+
+  // Observa cada tarjeta
+  cards.forEach((card) => observer.observe(card));
+</script>
