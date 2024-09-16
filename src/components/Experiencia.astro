@@ -4,7 +4,7 @@ import Puesto from "./Puesto.astro";
 ---
 
 <Section title="Experiencia">
-  <div class="flex flex-col timeline justify-center items-center">
+  <div class="relative flex flex-col timeline justify-center items-center after:content-[''] after:absolute after:w-4 after:rounded-lg after:top-0 after:bottom-0 after:bg-white dark:after:bg-gray-600">
     <Puesto
       company="Smurfit Kappa Iberoamericana SL"
       duration="jun 2022 - dic 2022"
@@ -18,21 +18,3 @@ import Puesto from "./Puesto.astro";
   </div>
 </Section>
 
-<style>
-  /* The actual timeline (the vertical ruler) */
-  .timeline {
-    position: relative;
-    margin: 0 auto;
-  }
-
-  /* The actual timeline (the vertical ruler) */
-  .timeline::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    background-color: rgb(var(--text-color));
-    top: 0;
-    bottom: 0;
-    border-radius: 15px;
-  }
-</style>

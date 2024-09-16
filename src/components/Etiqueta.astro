@@ -6,10 +6,13 @@ export interface Props {
   textColor?: string; // Prop opcional para el color del texto
 }
 
-const { name, backgroundColor = '#e0e0e0', textColor = '#000000' } = Astro.props; // Valores por defecto
+const { name } = Astro.props; // Valores por defecto
 ---
 
-<label class="etiqueta">{name}</label>
+<label class="etiqueta border border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+  {name}
+</label>
+
 
 <style>
     .etiqueta {
@@ -18,6 +21,5 @@ const { name, backgroundColor = '#e0e0e0', textColor = '#000000' } = Astro.props
       font-size: 0.875rem;
       font-weight: 600;
       display: inline-block;
-      box-shadow: 0 1px 2px rgba(var(--background-color)) ;
     }
   </style>

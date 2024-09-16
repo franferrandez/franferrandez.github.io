@@ -1,6 +1,4 @@
 ---
-import Etiqueta from "./Etiqueta.astro";
-
 // Props del componente
 export interface Props {
   title: string;
@@ -11,10 +9,10 @@ export interface Props {
 const { title, image, description } = Astro.props;
 ---
 
-<div class="card relative">
+<div class="card relative bg-white dark:bg-gray-600 shadow-lg dark:shadow-gray-700 transition-transform transform-gpu">
   <h2 class="card-title">{title}</h2>
   <!-- <img src={image} alt={title} class="card-image" /> -->
-  <div class="card-content">
+  <div class="card-content p-4">
     <p>{description}</p>
     <div class="flex flex-row gap-4 justify-end absolute bottom-20 right-10 z-10">
       <slot />
@@ -24,31 +22,38 @@ const { title, image, description } = Astro.props;
 
 <style>
   .card {
-    border: 5px solid rgb(var(--text-color));
-    background-color: rgb(var(--text-color));
     border-radius: 10% 30% 50% 70%;
-    box-shadow: 0 2px 4px rgba(var(--text-color), 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
     height: 25rem;
     padding: 10px 10px 150px 10px;
-    
     width: 500px;
     max-width: calc(100% - 2em);
-  /* Estilos base para ocultar las tarjetas antes de que aparezcan */
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
+    opacity: 0;
+    transition:
+      opacity 1s ease-out,
+      transform 1.5s ease-out;
+  }
 
-/* Estilo cuando la tarjeta es visible */
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  /* Impares desde la izquierda */
+  .card:nth-child(odd) {
+    transform: translateX(-50px);
+  }
+
+  /* Pares desde la derecha */
+  .card:nth-child(even) {
+    transform: translateX(50px);
+  }
+
+  /* Estilo cuando la tarjeta es visible */
+  .card.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(var(--text-color));
   }
 
   .card-image {
@@ -58,10 +63,6 @@ const { title, image, description } = Astro.props;
 
   .card-content {
     padding: 16px;
-/*     
-    border-radius: 8px;
-    background-color: rgb(var(--background-color)); */
-    /* height: 100%; */
   }
 
   .card-title {

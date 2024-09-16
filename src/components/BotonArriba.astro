@@ -2,39 +2,9 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<a class="chevron-up" id="chevron-up" (onC) ><Icon name="chevron-up" /></a>
-
-<style>
-  .chevron-up {
-    position: fixed;
-    bottom: 50px;
-    right: 17px;
-    background-color: rgba(var(--text-color)); /* Fondo semi-transparente */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 50%; /* Bordes redondeados */
-    color: white; /* Color del icono */
-    opacity: 0;
-    cursor: pointer; /* Cambiar el cursor a manita */
-    transition: opacity 0.3s, visibility 0.3s; /* Transición suave */
-    opacity: 0; /* Oculto por defecto */
-    visibility: hidden; /* Oculto por defecto */
-    border: 2px solid rgba(var(--background-color));
-  }
-
-  .chevron-up.visible {
-    opacity: 1; /* Visible */
-    visibility: visible; /* Visible */
-  }
-
-  .chevron-up:hover {
-    transform: scale(1.1);
-  }
-
-  [data-icon] {
-    font-size: 1.25rem;
-    color: rgba(var(--background-color));
-  }
-</style>
+<a class="chevron-up fixed bottom-12 right-4 bg-white dark:bg-gray-600  text-gray-700 dark:text-gray-200 p-2 rounded-full shadow-lg dark:shadow-gray-700 transition-opacity transition-transform opacity-0 invisible hover:opacity-100 hover:scale-110 hover:cursor-pointer" id="chevron-up">
+  <Icon name="chevron-up" />
+</a>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -53,11 +23,19 @@ import { Icon } from "astro-icon/components";
       const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrollPercentage = (scrollPosition / windowHeight) * 100;
 
-      if (scrollPercentage > 1) { // Mostrar el botón después del 25% de scroll
-        chevronUp.classList.add('visible');
+      if (scrollPercentage > 1) { // Mostrar el botón después del 1% de scroll
+        chevronUp.classList.remove('invisible');
+        chevronUp.classList.add('opacity-100');
       } else {
-        chevronUp.classList.remove('visible');
+        chevronUp.classList.add('invisible');
+        chevronUp.classList.remove('opacity-100');
       }
     });
   });
 </script>
+
+<style>
+  [data-icon] {
+    font-size: 1.75em;
+  }
+</style>
