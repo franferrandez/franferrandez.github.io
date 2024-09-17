@@ -1,3 +1,20 @@
----
-return Astro.redirect('/es/');
----
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio Francisco Ferrández" />
+    <link rel="icon" type="image/svg+xml" href="/franferrandez.svg" />
+    <title>franferrandez</title>
+    <script>
+      // Redirigir a la versión en español
+      window.location.replace("/es");
+    </script>
+  </head>
+  <body>
+    <!-- Opcionalmente puedes mostrar un mensaje aquí -->
+    <noscript>
+      Si no se redirige automáticamente, <a href="/es">haga clic aquí</a>.
+    </noscript>
+  </body>
+</html>
