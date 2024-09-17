@@ -2,16 +2,14 @@
 // Props del componente
 export interface Props {
   title: string;
-  image: string;
   description: string;
 }
 
-const { title, image, description } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <div class="card relative bg-white dark:bg-gray-600 shadow-lg dark:shadow-gray-700 transition-transform transform-gpu">
   <h2 class="card-title">{title}</h2>
-  <!-- <img src={image} alt={title} class="card-image" /> -->
   <div class="card-content p-4">
     <p>{description}</p>
     <div class="flex flex-row gap-4 justify-end absolute bottom-20 right-10 z-10">
@@ -54,11 +52,6 @@ const { title, image, description } = Astro.props;
 
   .card:hover {
     transform: translateY(-5px);
-  }
-
-  .card-image {
-    width: 100%;
-    height: auto;
   }
 
   .card-content {
