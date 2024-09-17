@@ -1,9 +1,13 @@
 ---
 import Section from "./Section.astro";
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Section title="Tecnologías">
+<Section title={t('technologies.title')}>
   <div class="flex justify-center">
     <div class="grid grid-cols-3 justify-center items-center gap-10">
       <a href="https://angular.dev/" target="_blank" rel="noreferrer nopener"

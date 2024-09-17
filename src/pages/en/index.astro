@@ -1,0 +1,73 @@
+---
+import Header from "../../components/Header.astro";
+import Body from "../../components/Body.astro";
+import Footer from "../../components/Footer.astro";
+import { getLangFromUrl } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio Francisco Ferrández" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/franferrandez.svg" />
+    <title>franferrandez</title>
+  </head>
+  <body
+    class="bg-gray-200 dark:bg-gray-800 text-black dark:text-white transition-colors duration-500"
+  >
+    <Header />
+    <Body />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+
+    --background-color: 165 180 252;
+    --text-color: 129 140 248;
+  }
+
+  .dark {
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent-dark)),
+      rgb(var(--accent)) 30%,
+      rgb(var(--accent-light)) 60%
+    );
+
+    --background-color: 129 140 248;
+    --text-color: 55 48 163;
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    scroll-behavior: smooth !important;
+    transition:
+      background-color 0.5s,
+      color 0.5s; /* Smooth transition for background and text color */
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box; /* 1 */
+    border-width: 0; /* 2 */
+    border-style: solid; /* 2 */
+    border-color: inherit; /* 2 */
+  }
+</style>

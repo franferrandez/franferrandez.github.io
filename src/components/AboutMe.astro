@@ -1,26 +1,19 @@
-<p>¡Bienvenido!</p>
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
-<p>
-  Soy un ingeniero informático graduado en la Universidad de Alicante apasionado
-  por el desarrollo de software y la automatización de procesos.
-</p>
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
 
-<p>
-  Me considero una persona resolutiva, comunicativa e inquieta. Estoy buscando
-  continuar mi desarrollo en el mundo empresarial para vivir nuevos retos y
-  disfrutar de proyectos en equipo.
-</p>
+<p> {t('about.welcome')}</p>
 
-<p>
-  Aunque llevo poco tiempo ejerciendo mi profesión, ya he creado una variedad de
-  aplicaciones, incluyendo soluciones de escritorio, aplicaciones web, servicios
-  API REST y proyectos que interactúan con servicios externos.
-</p>
+<p> {t('about.intro')} </p>
 
-<p>
-  A continuación, puedes encontrar información detallada sobre algunas de mis
-  habilidades y sobre los proyectos en los que he participado.
-</p>
+<p> {t('about.description')} </p>
+
+<p> {t('about.experience')} </p>
+
+<p> {t('about.projects')} </p>
 <style>
   p {
     /*text-wrap: balance;*/

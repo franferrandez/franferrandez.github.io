@@ -1,20 +1,23 @@
 ---
 import Section from "./Section.astro";
 import Puesto from "./Puesto.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Section title="Experiencia">
+<Section title={t('experience.title')}>
   <div class="relative flex flex-col timeline justify-center items-center after:content-[''] after:absolute after:w-4 after:rounded-lg after:top-0 after:bottom-0 after:bg-white dark:after:bg-gray-600">
     <Puesto
-      company="Smurfit Kappa Iberoamericana SL"
-      duration="jun 2022 - dic 2022"
-      description="Soporte IT a la fábrica. Redes y shell scripting."
+      company={t('experience.smurfit.company')}
+      duration={t('experience.smurfit.duration')}
+      description={t('experience.smurfit.description')}
     />
     <Puesto
-      company="Akra Informática Coop V"
-      duration="ene 2023 - actualidad"
-      description="Desarrollo de aplicaciones."
+      company={t('experience.akra.company')}
+      duration={t('experience.akra.duration')}
+      description={t('experience.akra.description')}
     />
   </div>
 </Section>
-

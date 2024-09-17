@@ -1,32 +1,37 @@
 ---
 import Section from "./Section.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Section title="Idiomas">
+<Section title={t('languages.title')}>
   <div class="grid col-span-1 gap-5">
     <div>
       <div class="flex justify-between">
-        <label>Español</label>
-        <label>NATIVO</label>
+        <label>{t('languages.spanish.label')}</label>
+        <label>{t('languages.spanish.level')}</label>
       </div>
       <hr />
     </div>
     <div>
       <div class="flex justify-between">
-        <label>Inglés</label>
-        <label>B1</label>
+        <label>{t('languages.english.label')}</label>
+        <label>{t('languages.english.level')}</label>
       </div>
       <hr />
     </div>
     <div>
       <div class="flex justify-between">
-        <label>Valenciano</label>
-        <label>C1</label>
+        <label>{t('languages.valencian.label')}</label>
+        <label>{t('languages.valencian.level')}</label>
       </div>
       <hr />
     </div>
   </div>
 </Section>
+
 
 <style>
     label {
