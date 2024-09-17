@@ -18,7 +18,7 @@ import { Icon } from "astro-icon/components";
 
       <div class="flex gap-3 items-center">
         <div class="flex gap-4 font-light text-xl">
-          <a class="logo" href="/es">
+          <a class="logo movil" href="/es">
             <div>ES</div>
           </a>
            <!-- Línea vertical -->
@@ -27,7 +27,7 @@ import { Icon } from "astro-icon/components";
             <div>EN</div>
           </a>
         </div>
-        <div class="ml-3 flex gap-2 redes-sociales">
+        <div class="ml-3 flex gap-2 movil">
           <a
             href="https://github.com/franferrandez"
             target="_blank"
@@ -84,7 +84,7 @@ import { Icon } from "astro-icon/components";
 
   /* Ocultar redes sociales en dispositivos móviles */
   @media (max-width: 625px) {
-    .redes-sociales {
+    .movil {
       display: none;
     }
   }
