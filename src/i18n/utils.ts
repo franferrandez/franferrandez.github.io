@@ -8,6 +8,12 @@ export function getLangFromUrl(url: URL) {
 
 export function useTranslations(lang: keyof typeof ui) {
   return function t(key: keyof typeof ui[typeof defaultLang]) {
-    return ui[lang][key] || ui[defaultLang][key];
-  }
+    // Verifica si la clave existe en el idioma seleccionado
+    if (ui[lang] && key in ui[lang]) {
+      return ui[lang][key as keyof typeof ui[typeof lang]];
+    } else {
+      // Si no existe en el idioma seleccionado, devuelve la clave en el idioma predeterminado
+      return ui[defaultLang][key];
+    }
+  };
 }
