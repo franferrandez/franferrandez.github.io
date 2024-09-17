@@ -5,14 +5,16 @@ import { Icon } from "astro-icon/components";
 
 <header class="pt-1 pb-1 bg-gray-200 dark:bg-gray-800">
   <section class="ml-10 mr-10 mb-3">
-    
     <div class="flex items-center justify-between mt-2">
-      <a href="/" class="flex flex-col logo"> <!-- Envolvemos en un <a> -->
-        <h1 class="text-2xl font-mono">FRANCISCO</h1>
-        <h1 class="text-xs font-mono">FERRÁNDEZ MARTÍNEZ</h1>
+      <a href="/" class="flex items-center gap-4 logo">
+        <!-- Envolvemos en un <a> -->
+        <img class="w-16 h-16" src="./img/franferrandez.png" alt="icon" />
+        <div class="flex flex-col">
+          <h1 class="text-2xl font-mono font-semibold">FRANCISCO</h1>
+          <h1 class="text-xs font-mono">FERRÁNDEZ MARTÍNEZ</h1>
+        </div>
       </a>
 
-      
       <div class="flex gap-3 items-center">
         <div class="flex gap-2 redes-sociales">
           <a
@@ -32,7 +34,6 @@ import { Icon } from "astro-icon/components";
         <Toggle />
       </div>
     </div>
-    
   </section>
   <!-- <hr class="bg-white "/> -->
 </header>
@@ -52,7 +53,6 @@ import { Icon } from "astro-icon/components";
     font-size: 2rem;
   }
   a {
-    display: inline-block; /* Asegura que el elemento se trate como un bloque en línea para transformaciones */
     transition:
       transform 0.2s,
       color 0.2s;
@@ -66,7 +66,7 @@ import { Icon } from "astro-icon/components";
     user-select: none; /* Evita que el texto sea seleccionable */
     text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
   }
-  
+
   .logo h1 {
     color: inherit; /* Asegura que el color del texto se mantenga igual */
   }
