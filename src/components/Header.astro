@@ -16,18 +16,18 @@ import { Icon } from "astro-icon/components";
         </div>
       </a>
 
-      <div class="flex gap-3 items-center">
-        <div class="movil flex gap-4 font-light text-xl">
+      <div class="flex movil gap-3 items-center">
+        <div class="flex gap-4 font-light text-xl">
           <a class="logo" href="/es">
             <div>ES</div>
           </a>
-           <!-- Línea vertical -->
+          <!-- Línea vertical -->
           <div>|</div>
           <a class="logo" href="/en">
             <div>EN</div>
           </a>
         </div>
-        <div class="ml-3 flex gap-2 movil">
+        <div class="ml-3 flex gap-2">
           <a
             href="https://github.com/franferrandez"
             target="_blank"
@@ -44,10 +44,37 @@ import { Icon } from "astro-icon/components";
         </div>
         <Toggle />
       </div>
+
+      <Icon id="menuToggle" name="menu"/>
+    </div>
+
+    <!-- Menú desplegable en móviles (oculto inicialmente) -->
+    <div id="mobileMenu" class="flex justify-between mt-5 bg-gray-300 dark:bg-gray-700">
+      <div class="flex gap-4 font-light text-xl">
+        <a class="logo" href="/es">ES</a>
+        <div>|</div>
+        <a class="logo" href="/en">EN</a>
+      </div>
+      <div class="ml-3 flex gap-2">
+        <a
+          href="https://github.com/franferrandez"
+          target="_blank"
+          rel="noreferrer nopener"><Icon name="github" /></a
+        >
+        <a href="mailto:franciscoferrandezmartinez@gmail.com"
+          ><Icon name="mail" /></a
+        >
+        <a
+          href="https://www.linkedin.com/in/franferrandez/"
+          target="_blank"
+          rel="noreferrer nopener"><Icon name="linkedin" /></a
+        >
+      </div>
+      <Toggle/>
     </div>
   </section>
-  <!-- <hr class="bg-white "/> -->
 </header>
+<!-- <hr class="bg-white "/> -->
 
 <style>
   header {
@@ -82,10 +109,52 @@ import { Icon } from "astro-icon/components";
     color: inherit; /* Asegura que el color del texto se mantenga igual */
   }
 
-  /* Ocultar redes sociales en dispositivos móviles */
+  #menuToggle {
+    display: none;
+  }
+
+  #mobileMenu {
+    display: none;
+  }
+
+  /* Mostrar menú en móviles */
   @media (max-width: 625px) {
     .movil {
       display: none;
     }
+
+    #menuToggle {
+      display: block;
+      cursor: pointer;
+    }
+
+    #menuToggle:hover {
+      font-size: 2.1rem;
+    }
+
+    #mobileMenu.active {
+      display: flex;
+    }
   }
 </style>
+
+<!-- JavaScript para alternar el menú -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    console.log('no pasa', menuToggle, mobileMenu)
+    // Verifica si existe el botón para alternar el menú
+    if (!menuToggle || !mobileMenu) return;
+
+    console.log('pasa')
+    // Agregar evento de clic para mostrar/ocultar el menú
+    menuToggle.addEventListener('click', function (event) {
+      event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+      mobileMenu.classList.toggle('active'); // Alterna la clase 'active' en el menú
+    });
+  });
+</script>
+
+
