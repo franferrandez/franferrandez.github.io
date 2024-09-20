@@ -45,11 +45,11 @@ import { Icon } from "astro-icon/components";
         <Toggle />
       </div>
 
-      <Icon id="menuToggle" name="menu"/>
+      <Icon id="menuToggle" name="menu" />
     </div>
 
     <!-- Menú desplegable en móviles (oculto inicialmente) -->
-    <div id="mobileMenu" class="flex justify-between mt-5 bg-gray-300 dark:bg-gray-700">
+    <div id="mobileMenu" class="flex justify-between mt-5">
       <div class="flex gap-4 font-light text-xl">
         <a class="logo" href="/es">ES</a>
         <div>|</div>
@@ -70,7 +70,7 @@ import { Icon } from "astro-icon/components";
           rel="noreferrer nopener"><Icon name="linkedin" /></a
         >
       </div>
-      <Toggle/>
+      <Toggle />
     </div>
   </section>
 </header>
@@ -140,21 +140,19 @@ import { Icon } from "astro-icon/components";
 
 <!-- JavaScript para alternar el menú -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-    console.log('no pasa', menuToggle, mobileMenu)
+    console.log("no pasa", menuToggle, mobileMenu);
     // Verifica si existe el botón para alternar el menú
     if (!menuToggle || !mobileMenu) return;
 
-    console.log('pasa')
+    console.log("pasa");
     // Agregar evento de clic para mostrar/ocultar el menú
-    menuToggle.addEventListener('click', function (event) {
+    menuToggle.addEventListener("click", function (event) {
       event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-      mobileMenu.classList.toggle('active'); // Alterna la clase 'active' en el menú
+      mobileMenu.classList.toggle("active"); // Alterna la clase 'active' en el menú
     });
   });
 </script>
-
-
