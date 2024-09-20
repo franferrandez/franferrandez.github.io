@@ -12,6 +12,7 @@
 
     // Función para cambiar el ícono de todos los toggles según el modo oscuro
     function updateAllTogglesIcon() {
+      if(!html) return;
       toggles.forEach(toggle => {
         if (html.classList.contains('dark')) {
           toggle.innerHTML = getLightIcon();
