@@ -6,41 +6,42 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Definimos un arreglo de proyectos con su clave y tecnologías asociadas
+const projects = [
+  {
+    key: "sgiweb",
+    techs: ["Angular", ".NET Core"]
+  },
+  {
+    key: "akraVeriFactu",
+    techs: ["WinForms", ".NET Core"]
+  },
+  {
+    key: "akraFACe",
+    techs: ["WinForms", ".NET Core"]
+  },
+  {
+    key: "mailManager",
+    techs: ["WinForms", ".NET Core"]
+  }
+];
 ---
 
 <Section title={t('projects.title')}>
-  <div class="flex flex-col items-center gap-5">
-    <Card
-      title={t('projects.sgiweb.title')}
-      description={t('projects.sgiweb.description')}
-    >
-      <Etiqueta name="Angular" />
-      <Etiqueta name=".NET" />
-    </Card>
-    <Card
-      title={t('projects.akraVeriFactu.title')}
-      description={t('projects.akraVeriFactu.description')}
-    >
-      <Etiqueta name="WinForms" />
-      <Etiqueta name=".NET" />
-    </Card>
-    <Card
-      title={t('projects.akraFACe.title')}
-      description={t('projects.akraFACe.description')}
-    >
-      <Etiqueta name="WinForms" />
-      <Etiqueta name=".NET" />
-    </Card>
-    <Card
-      title={t('projects.mailManager.title')}
-      description={t('projects.mailManager.description')}
-    >
-      <Etiqueta name="WinForms" />
-      <Etiqueta name=".NET" />
-    </Card>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    {projects.map((project) => (
+      <Card
+        title={t(`projects.${project.key}.title`)}
+        description={t(`projects.${project.key}.description`)}
+      >
+        {project.techs.map((tech) => (
+          <Etiqueta name={tech} />
+        ))}
+      </Card>
+    ))}
   </div>
 </Section>
-
 
 <script>
   const observer = new IntersectionObserver((entries) => {

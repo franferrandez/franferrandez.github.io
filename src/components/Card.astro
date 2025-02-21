@@ -8,7 +8,7 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
-<div class="card relative bg-white dark:bg-gray-600 shadow-lg dark:shadow-gray-700 transition-transform transform-gpu">
+<div class="card relative shadow-lg shadow-gray-300 dark:bg-gray-600  dark:shadow-gray-700 transition-transform transform-gpu">
   <h2 class="card-title">{title}</h2>
   <div class="card-content p-4">
     <p>{description}</p>
@@ -24,10 +24,9 @@ const { title, description } = Astro.props;
     transition:
       transform 0.2s,
       box-shadow 0.2s;
-    height: 25rem;
+    height: 28rem;
     padding: 10px 10px 150px 10px;
-    width: 500px;
-    max-width: calc(100% - 2em);
+    max-width: 80ch;
     opacity: 0;
     transition:
       opacity 1s ease-out,

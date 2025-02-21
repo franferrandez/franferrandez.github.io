@@ -2,39 +2,60 @@
 import Hero from "./Hero.astro";
 import AboutMe from "./AboutMe.astro";
 import Tecnologias from "./Tecnologias.astro";
-import Idiomas from "./Idiomas.astro"
-import Experiencia from "./Experiencia.astro"
-import Proyectos from "./Proyectos.astro"
-import Contacto from "./Contacto.astro"
-import BotonArriba from "./BotonArriba.astro"
+import Idiomas from "./Idiomas.astro";
+import Experiencia from "./Experiencia.astro";
+import Proyectos from "./Proyectos.astro";
+import Contacto from "./Contacto.astro";
+import BotonArriba from "./BotonArriba.astro";
 ---
+
 <!-- ml-10 mr-10 sm:ml-40 sm:mr-40  lg:ml-80 lg:mr-80 -->
 <main class="bg-gray-100 dark:bg-gray-900">
   <div class="contenido">
-  <!-- <Hero /> -->
-  <AboutMe></AboutMe>
+    <AboutMe />
+  </div>
 
-  <div class="lg:grid lg:grid-cols-2 lg:gap-16">
-  <Tecnologias></Tecnologias>
+  <!-- Banner de ancho completo con gradiente -->
+  <div class="w-full gradient-banner">
+    <div class="contenido">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+        <Tecnologias />
+        <Idiomas />
+      </div>
+    </div>
+  </div>
 
-  <Idiomas></Idiomas>
-</div>
-
-  <Experiencia></Experiencia>
-
-  <Proyectos></Proyectos>
-  
-  <!-- <Contacto></Contacto> -->
-
-  <BotonArriba></BotonArriba>
-</div>
+  <div class="contenido">
+    <Experiencia />
+    <Proyectos />
+    <BotonArriba />
+  </div>
 </main>
 
-<style>
+<style is:global>
   .contenido {
-    width: 720px;
-    max-width: calc(100% - 2em);
+    max-width: 80ch;
     margin: auto;
-    padding: 3em 1em;
+    padding: 3em 2em;
+  }
+  .gradient-banner {
+    /* Degradado para modo claro: se funde de transparente a azul y luego vuelve a transparente */
+    background: linear-gradient(
+      to bottom,
+      rgba(59, 187, 246, 0) 0%,
+      #d1d5db 50%,
+      rgba(59, 130, 246, 0) 100%
+    );
+  }
+  .dark .gradient-banner {
+    /* Degradado para modo oscuro: se funde de transparente a azul oscuro y luego vuelve a transparente */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 224, 31, 0) 0%,
+      rgb(75 85 99 / var(--tw-bg-opacity, 1)) 50%,
+      rgba(122, 138, 30, 0) 100%
+    );
   }
 </style>
+
+

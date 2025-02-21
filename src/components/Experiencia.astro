@@ -1,23 +1,34 @@
 ---
 import Section from "./Section.astro";
 import Puesto from "./Puesto.astro";
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const puestos = [
+  {
+    company: t("experience.smurfit.company"),
+    duration: t("experience.smurfit.duration"),
+    description: t("experience.smurfit.description"),
+  },
+  {
+    company: t("experience.akra.company"),
+    duration: t("experience.akra.duration"),
+    description: t("experience.akra.description"),
+  },
+  {
+    company: t("experience.gsgestion.company"),
+    duration: t("experience.gsgestion.duration"),
+    description: t("experience.gsgestion.description"),
+  },
+];
 ---
 
-<Section title={t('experience.title')}>
-  <div class="relative flex flex-col timeline justify-center items-center after:content-[''] after:absolute after:w-4 after:rounded-lg after:top-0 after:bottom-0 after:bg-white dark:after:bg-gray-600">
-    <Puesto
-      company={t('experience.smurfit.company')}
-      duration={t('experience.smurfit.duration')}
-      description={t('experience.smurfit.description')}
-    />
-    <Puesto
-      company={t('experience.akra.company')}
-      duration={t('experience.akra.duration')}
-      description={t('experience.akra.description')}
-    />
+<Section title={t("experience.title")}>
+  <div
+    class="relative flex flex-col timeline justify-center items-center after:content-[''] after:absolute after:w-4 after:rounded-lg after:top-0 after:bottom-0 after:bg-white dark:after:bg-gray-600"
+  >
+    {puestos.map((puesto) => <Puesto {...puesto} />)}
   </div>
 </Section>

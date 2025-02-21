@@ -4,6 +4,8 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const currentYear = new Date().getFullYear();
+const rightsText = `© ${currentYear} ${t('footer.rights')}`;
 ---
 
 <footer class="flex flex-col pt-4 pb-4 justify-center items-center gap-6 bg-gray-200 dark:bg-gray-800">
@@ -12,7 +14,7 @@ const t = useTranslations(lang);
     <Icon name="astro" class="astro-icon" />
     <span>y Tailwind CSS</span>
     <Icon name="tailwind" class="tailwind-icon" /> -->
-    <div class="font-mono text-lg text-center">{t('footer.rights')}</div>
+    <div class="font-mono text-lg text-center">{rightsText}</div>
     <div class="flex gap-6">
       <a
         href="https://github.com/franferrandez"
