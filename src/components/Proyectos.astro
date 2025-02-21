@@ -29,17 +29,19 @@ const projects = [
 ---
 
 <Section title={t('projects.title')}>
-  <div class="overflow-x-hidden p-3 grid grid-cols-1 md:grid-cols-2 gap-5">
-    {projects.map((project) => (
-      <Card
-      title={t(`projects.${project.key}.title` as any)}
-      description={t(`projects.${project.key}.description` as any)}
-      >
-        {project.techs.map((tech) => (
-          <Etiqueta name={tech} />
-        ))}
-      </Card>
-    ))}
+  <div class="overflow-x-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 p-8">
+      {projects.map((project) => (
+        <Card
+          title={t(`projects.${project.key}.title` as any)}
+          description={t(`projects.${project.key}.description` as any)}
+        >
+          {project.techs.map((tech) => (
+            <Etiqueta name={tech} />
+          ))}
+        </Card>
+      ))}
+    </div>
   </div>
 </Section>
 
