@@ -11,25 +11,25 @@ const t = useTranslations(lang);
 const projects = [
   {
     key: "sgiweb",
-    techs: ["Angular", ".NET Core"]
+    techs: ["Angular", ".NET"]
   },
   {
     key: "akraVeriFactu",
-    techs: ["WinForms", ".NET Core"]
+    techs: ["WinForms", ".NET"]
   },
   {
     key: "akraFACe",
-    techs: ["WinForms", ".NET Core"]
+    techs: ["WinForms", ".NET"]
   },
   {
     key: "mailManager",
-    techs: ["WinForms", ".NET Core"]
+    techs: ["WinForms", ".NET"]
   }
 ];
 ---
 
 <Section title={t('projects.title')}>
-  <div class="overflow-x-hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+  <div class="overflow-x-hidden p-3 grid grid-cols-1 md:grid-cols-2 gap-5">
     {projects.map((project) => (
       <Card
       title={t(`projects.${project.key}.title` as any)}
