@@ -1,15 +1,16 @@
 ---
 import Toggle from "./Toggle.astro";
 import { Icon } from "astro-icon/components";
+import LanguageDropdown from "./LanguageDropdown.astro";
 ---
 
-<header class="pt-1 pb-1 bg-gray-200 dark:bg-gray-800">
+<header class="pt-1 pb-1 bg-amber-200/90 text-amber-800">
   <section class="ml-10 mr-10 mb-3">
     <div class="flex items-center justify-between mt-2">
       <a href="/" class="flex items-center gap-4 logo">
         <!-- Envolvemos en un <a> -->
         <!-- <img class="w-16 h-16" src="./img/franferrandez.png" alt="icon" /> -->
-        <Icon name="franferrandez" class="w-16 h-16" />
+        <Icon name="franferrandez"  class="w-12 h-12"/>
         <div class="flex flex-col">
           <h1 class="text-2xl font-mono font-semibold">FRANCISCO</h1>
           <h1 class="text-xs font-mono">FERRÁNDEZ MARTÍNEZ</h1>
@@ -17,32 +18,25 @@ import { Icon } from "astro-icon/components";
       </a>
 
       <div class="flex movil gap-3 items-center">
-        <div class="flex gap-4 font-light text-xl">
-          <a class="logo" href="/es">
-            <div>ES</div>
-          </a>
-          <!-- Línea vertical -->
-          <div>|</div>
-          <a class="logo" href="/en">
-            <div>EN</div>
-          </a>
-        </div>
-        <div class="ml-3 flex gap-2">
+        <div class="flex gap-2 items-center">
           <a
             href="https://github.com/franferrandez"
             target="_blank"
-            rel="noreferrer nopener"><Icon name="github" /></a
+            rel="noreferrer nopener"><Icon name="github" class="w-6 h-6 hover:text-amber-950"/></a
           >
           <a href="mailto:franciscoferrandezmartinez@gmail.com"
-            ><Icon name="mail" /></a
+            ><Icon name="mail" class="w-6 h-6 hover:text-amber-950"/></a
           >
           <a
             href="https://www.linkedin.com/in/franferrandez/"
             target="_blank"
-            rel="noreferrer nopener"><Icon name="linkedin" /></a
+            rel="noreferrer nopener"><Icon name="linkedin" class="w-6 h-6 hover:text-amber-950"/></a
           >
         </div>
+        <span class="separator">|</span>
         <Toggle />
+        <span class="separator">|</span>
+        <LanguageDropdown />
       </div>
 
       <Icon id="menuToggle" name="menu" />
@@ -50,27 +44,23 @@ import { Icon } from "astro-icon/components";
 
     <!-- Menú desplegable en móviles (oculto inicialmente) -->
     <div id="mobileMenu" class="flex justify-between mt-5">
-      <div class="flex gap-4 font-light text-xl">
-        <a class="logo" href="/es">ES</a>
-        <div>|</div>
-        <a class="logo" href="/en">EN</a>
-      </div>
       <div class="ml-3 flex gap-2">
         <a
           href="https://github.com/franferrandez"
           target="_blank"
-          rel="noreferrer nopener"><Icon name="github" /></a
+          rel="noreferrer nopener"><Icon name="github" class="w-6 h-6"/></a
         >
         <a href="mailto:franciscoferrandezmartinez@gmail.com"
-          ><Icon name="mail" /></a
+          ><Icon name="mail" class="w-6 h-6"/></a
         >
         <a
           href="https://www.linkedin.com/in/franferrandez/"
           target="_blank"
-          rel="noreferrer nopener"><Icon name="linkedin" /></a
+          rel="noreferrer nopener"><Icon name="linkedin" class="w-6 h-6"/></a
         >
       </div>
       <Toggle />
+      <LanguageDropdown />
     </div>
   </section>
 </header>
@@ -90,15 +80,6 @@ import { Icon } from "astro-icon/components";
   [data-icon] {
     font-size: 2rem;
   }
-  a {
-    transition:
-      transform 0.2s,
-      color 0.2s;
-  }
-
-  a:hover {
-    transform: scale(1.1);
-  }
 
   .logo {
     user-select: none; /* Evita que el texto sea seleccionable */
@@ -117,7 +98,10 @@ import { Icon } from "astro-icon/components";
     display: none;
   }
 
-  /* Mostrar menú en móviles */
+  .separator {
+    margin: 0 0.5rem;
+  }
+
   @media (max-width: 625px) {
     .movil {
       display: none;
@@ -134,6 +118,10 @@ import { Icon } from "astro-icon/components";
 
     #mobileMenu.active {
       display: flex;
+    }
+
+    .separator {
+      display: none;
     }
   }
 </style>

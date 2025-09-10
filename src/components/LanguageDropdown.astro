@@ -1,0 +1,85 @@
+---
+import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import { languages } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<div class="relative">
+  <button id="languageButton" class="flex items-center gap-2 rounded-lg">
+    <Icon name="globe" class="w-5 h-5" />
+  </button>
+  <ul id="languageMenu" class="bg-white dark:bg-gray-700 shadow-md rounded mt-2">
+    {languages.map((language) => (
+      <li>
+        <a
+          href={translatePath('/', language.code)}
+          class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600"
+          data-lang={language.code}
+        >
+          {language.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  #languageMenu {
+    list-style: none;
+    padding: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+    opacity: 0;
+    transform: translateX(-50px) translateX(-10px);
+    pointer-events: none; /* Evita la interacción cuando está oculto */
+    position: absolute;
+  }
+
+  #languageMenu.show {
+    opacity: 1;
+    transform: translateX(-50px) translateY(0px);
+    pointer-events: auto; /* Permite la interacción cuando está visible */
+  }
+
+  #languageButton {
+    cursor: pointer;
+  }
+
+  #languageMenu a {
+    display: block; /* Asegura que el enlace sea un elemento de bloque */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+  }
+
+  #languageMenu a:hover {
+    background-color: var(--hover-bg-color, #e5e7eb); /* Fondo al pasar el cursor */
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const languageButton = document.getElementById("languageButton");
+    const languageMenu = document.getElementById("languageMenu");
+
+    if (!languageButton || !languageMenu) return; // Verificar que los elementos existen
+
+    // Mostrar/ocultar el menú al hacer clic en el botón
+    languageButton.addEventListener("click", () => {
+      languageMenu.classList.toggle("show");
+    });
+
+    // Cerrar el menú si se hace clic fuera de él
+    document.addEventListener("click", (event) => {
+      if (!languageButton.contains(event.target as Node) && !languageMenu.contains(event.target as Node)) {
+        languageMenu.classList.remove("show");
+      }
+    });
+
+    // Evitar que el clic dentro del menú cierre el menú
+    languageMenu.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+  });
+</script>

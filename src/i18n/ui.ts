@@ -1,4 +1,10 @@
 export const defaultLang = "es";
+export const showDefaultLang = false;
+
+export const languages = [
+  { code: "es", label: "Español" },
+  { code: "en", label: "English" },
+];
 
 export const ui = {
   en: {

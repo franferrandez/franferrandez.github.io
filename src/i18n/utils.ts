@@ -1,4 +1,4 @@
-import { ui, defaultLang } from './ui';
+import { ui, defaultLang, showDefaultLang } from './ui';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
@@ -15,5 +15,12 @@ export function useTranslations(lang: keyof typeof ui) {
       // Si no existe en el idioma seleccionado, devuelve la clave en el idioma predeterminado
       return ui[defaultLang][key];
     }
+  };
+}
+
+export function useTranslatedPath(lang: keyof typeof ui) {
+  return function translatePath(path: string, l: string = lang) {
+    // Si el idioma es el predeterminado y no se debe mostrar, devolver solo el path
+    return !showDefaultLang && l === defaultLang ? path : `/${l}${path}`;
   };
 }

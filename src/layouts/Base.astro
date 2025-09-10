@@ -1,0 +1,26 @@
+---
+import Header from "../components/Header.astro";
+import Body from "../components/Body.astro";
+import Footer from "../components/Footer.astro";
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio Francisco Ferrández" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/franferrandez.svg" />
+    <title>franferrandez</title>
+  </head>
+  <body
+    class="text-black dark:text-white transition-colors duration-300"
+  >
+    <Header />
+    <Body />
+    <Footer />
+  </body>
+</html>
