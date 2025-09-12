@@ -1,8 +1,8 @@
 ---
-import Header from "../components/Header.astro";
-import Body from "../components/Body.astro";
-import Footer from "../components/Footer.astro";
-import { getLangFromUrl } from '../i18n/utils';
+import Header from "@components/Header.astro";
+import Body from "@components/Body.astro";
+import Footer from "@components/Footer.astro";
+import { getLangFromUrl } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 ---
@@ -17,10 +17,32 @@ const lang = getLangFromUrl(Astro.url);
     <title>franferrandez</title>
   </head>
   <body
-    class="text-black dark:text-white transition-colors duration-300"
+    class="text-amber-800 transition-colors duration-300 bg-amber-50 dark:bg-amber-400"
   >
     <Header />
     <Body />
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  /* Estilos base */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
+  }
+</style>

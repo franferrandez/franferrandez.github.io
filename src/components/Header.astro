@@ -4,33 +4,45 @@ import { Icon } from "astro-icon/components";
 import LanguageDropdown from "./LanguageDropdown.astro";
 ---
 
-<header class="pt-1 pb-1 bg-amber-200/90 text-amber-800">
+<header
+  class="pt-1 pb-1 bg-amber-200 text-amber-800 dark:bg-amber-300 dark:text-amber-950 shadow-md"
+>
   <section class="ml-10 mr-10 mb-3">
     <div class="flex items-center justify-between mt-2">
       <a href="/" class="flex items-center gap-4 logo">
         <!-- Envolvemos en un <a> -->
         <!-- <img class="w-16 h-16" src="./img/franferrandez.png" alt="icon" /> -->
-        <Icon name="franferrandez"  class="w-12 h-12"/>
+        <Icon name="franferrandez" class="w-12 h-12 hover:size-2" />
         <div class="flex flex-col">
           <h1 class="text-2xl font-mono font-semibold">FRANCISCO</h1>
           <h1 class="text-xs font-mono">FERRÁNDEZ MARTÍNEZ</h1>
         </div>
       </a>
-
       <div class="flex movil gap-3 items-center">
         <div class="flex gap-2 items-center">
           <a
             href="https://github.com/franferrandez"
             target="_blank"
-            rel="noreferrer nopener"><Icon name="github" class="w-6 h-6 hover:text-amber-950"/></a
+            rel="noreferrer nopener"
+            ><Icon
+              name="github"
+              class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
+            /></a
           >
           <a href="mailto:franciscoferrandezmartinez@gmail.com"
-            ><Icon name="mail" class="w-6 h-6 hover:text-amber-950"/></a
+            ><Icon
+              name="mail"
+              class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
+            /></a
           >
           <a
             href="https://www.linkedin.com/in/franferrandez/"
             target="_blank"
-            rel="noreferrer nopener"><Icon name="linkedin" class="w-6 h-6 hover:text-amber-950"/></a
+            rel="noreferrer nopener"
+            ><Icon
+              name="linkedin"
+              class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
+            /></a
           >
         </div>
         <span class="separator">|</span>
@@ -38,29 +50,46 @@ import LanguageDropdown from "./LanguageDropdown.astro";
         <span class="separator">|</span>
         <LanguageDropdown />
       </div>
-
       <Icon id="menuToggle" name="menu" />
     </div>
+  </section>
 
-    <!-- Menú desplegable en móviles (oculto inicialmente) -->
-    <div id="mobileMenu" class="flex justify-between mt-5">
-      <div class="ml-3 flex gap-2">
+  <!-- Menú desplegable en móviles (oculto inicialmente) -->
+  <section
+    id="mobileMenu"
+    class="pt-2 pb-4 pl-16 pr-16 bg-amber-200 text-amber-800 dark:bg-amber-300 dark:text-amber-950 shadow-md"
+  >
+    <div class="flex justify-between">
+      <div class="flex gap-2">
         <a
           href="https://github.com/franferrandez"
           target="_blank"
-          rel="noreferrer nopener"><Icon name="github" class="w-6 h-6"/></a
+          rel="noreferrer nopener"
+          ><Icon
+            name="github"
+            class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
+          /></a
         >
         <a href="mailto:franciscoferrandezmartinez@gmail.com"
-          ><Icon name="mail" class="w-6 h-6"/></a
+          ><Icon
+            name="mail"
+            class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
+          /></a
         >
         <a
           href="https://www.linkedin.com/in/franferrandez/"
           target="_blank"
-          rel="noreferrer nopener"><Icon name="linkedin" class="w-6 h-6"/></a
+          rel="noreferrer nopener"
+          ><Icon
+            name="linkedin"
+            class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
+          /></a
         >
       </div>
-      <Toggle />
-      <LanguageDropdown />
+      <div class="flex gap-2 items-normal">
+        <Toggle />
+        <LanguageDropdown />
+      </div>
     </div>
   </section>
 </header>
@@ -69,10 +98,12 @@ import LanguageDropdown from "./LanguageDropdown.astro";
 <style>
   header {
     position: sticky;
-    width: 100%;
-    z-index: 2;
     top: 0;
+    z-index: 50;
+    corner-shape: bevel;
+    border-bottom-right-radius: 5% 25px;
   }
+
   hr {
     width: 100%;
   }
@@ -95,7 +126,23 @@ import LanguageDropdown from "./LanguageDropdown.astro";
   }
 
   #mobileMenu {
-    display: none;
+    position: absolute; /* posicionado relativo al header */
+    left: 0;
+    right: 0;
+    top: 100%; /* justo debajo del header */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      max-height 0.35s ease;
+
+    corner-shape: bevel;
+    border-bottom-right-radius: 10% 50px;
+    width: 95%;
   }
 
   .separator {
@@ -117,9 +164,11 @@ import LanguageDropdown from "./LanguageDropdown.astro";
     }
 
     #mobileMenu.active {
-      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      max-height: 500px; /* ajusta según contenido */
     }
-
     .separator {
       display: none;
     }

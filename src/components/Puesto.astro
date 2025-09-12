@@ -10,9 +10,7 @@ const { company, duration, description } = Astro.props;
 ---
 
 <div class="container">
-  <div
-    class="content bg-white dark:bg-gray-600"
-  >
+  <div class="content bg-amber-200 dark:bg-amber-300">
     <h2>{company}</h2>
     <small>{duration}</small>
     <p>{description}</p>
@@ -20,7 +18,7 @@ const { company, duration, description } = Astro.props;
 </div>
 
 <style>
-    h2 {
+  h2 {
     font-size: 1.5rem;
     margin-top: 0rem;
     width: 100%;

@@ -1,7 +1,7 @@
 ---
 import Section from "./Section.astro";
 import Puesto from "./Puesto.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -27,7 +27,7 @@ const puestos = [
 
 <Section title={t("experience.title")}>
   <div
-    class="relative flex flex-col timeline justify-center items-center after:content-[''] after:absolute after:w-4 after:rounded-lg after:top-0 after:bottom-0 after:bg-white dark:after:bg-gray-600"
+    class="relative flex flex-col timeline justify-center items-center after:content-[''] after:absolute after:w-4 after:rounded-lg after:top-0 after:bottom-0 after:bg-amber-200 dark:after:bg-amber-300"
   >
     {puestos.map((puesto) => <Puesto {...puesto} />)}
   </div>
