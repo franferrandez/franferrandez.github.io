@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía de Alojamiento - Boda Francisco e Irene</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Montserrat:wght@400;500;600;700&display=swap");
+
+      @page {
+        size: 210mm auto;
+        background-color: #fdfbfb;
+      }
+
+      :root {
+        --primary: #5c1d2e; /* Burdeos elegante */
+        --accent: #80233a; /* Burdeos vibrante */
+        --rose-soft: #faf0f2; /* Rosa suave */
+        --bg: #fdfbfb; /* Fondo cálido */
+        --card-bg: #ffffff; /* Blanco puro */
+        --text-main: #3b2a2e; /* Texto principal */
+        --text-muted: #785a62; /* Texto secundario */
+        --border: #f0dfe3; /* Bordes rosa palo */
+        --star-color: #d97706; /* Dorado para estrellas */
+        --badge-bg: #fcedf0; /* Badge rosa clarito */
+        --badge-text: #6b1d31; /* Texto badge burdeos */
+      }
+
+      /* =========================================
+         EFECTO DE PÉTALOS DE CEREZO (BACKGROUND)
+         ========================================= */
+      .petals-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .petal {
+        position: absolute;
+        top: -10%;
+        background: linear-gradient(
+          135deg,
+          #ffd1dc 0%,
+          #ffb6c1 70%,
+          #ffa6b9 100%
+        );
+        border-radius: 15px 0px 15px 0px;
+        opacity: 0.7;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        0% {
+          top: -10%;
+          transform: translateX(0) rotate(0deg);
+          opacity: 0.8;
+        }
+        50% {
+          transform: translateX(80px) rotate(180deg);
+          opacity: 0.6;
+        }
+        100% {
+          top: 105%;
+          transform: translateX(-40px) rotate(360deg);
+          opacity: 0.2;
+        }
+      }
+
+      /* Posicionamiento y animación individual de pétalos */
+      .petal:nth-child(1) {
+        left: 5%;
+        width: 14px;
+        height: 18px;
+        animation-duration: 10s;
+        animation-delay: 0s;
+      }
+      .petal:nth-child(2) {
+        left: 18%;
+        width: 10px;
+        height: 14px;
+        animation-duration: 7s;
+        animation-delay: 2s;
+      }
+      .petal:nth-child(3) {
+        left: 28%;
+        width: 16px;
+        height: 20px;
+        animation-duration: 12s;
+        animation-delay: 4s;
+      }
+      .petal:nth-child(4) {
+        left: 40%;
+        width: 12px;
+        height: 15px;
+        animation-duration: 8s;
+        animation-delay: 1s;
+      }
+      .petal:nth-child(5) {
+        left: 52%;
+        width: 15px;
+        height: 19px;
+        animation-duration: 11s;
+        animation-delay: 3s;
+      }
+      .petal:nth-child(6) {
+        left: 65%;
+        width: 9px;
+        height: 12px;
+        animation-duration: 9s;
+        animation-delay: 5s;
+      }
+      .petal:nth-child(7) {
+        left: 75%;
+        width: 14px;
+        height: 18px;
+        animation-duration: 13s;
+        animation-delay: 2s;
+      }
+      .petal:nth-child(8) {
+        left: 85%;
+        width: 11px;
+        height: 15px;
+        animation-duration: 6s;
+        animation-delay: 0s;
+      }
+      .petal:nth-child(9) {
+        left: 93%;
+        width: 13px;
+        height: 17px;
+        animation-duration: 10s;
+        animation-delay: 3.5s;
+      }
+
+      /* =========================================
+         AJUSTES PARA IMPRESIÓN EN PDF
+         ========================================= */
+      @media print {
+        .petals-container {
+          display: none !important; /* Desactiva la animación al imprimir en PDF */
+        }
+
+        *,
+        *::before,
+        *::after {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+
+        body {
+          font-family: "Montserrat", sans-serif;
+          background-color: var(--bg);
+          color: var(--text-main);
+          line-height: 1.45;
+          -webkit-font-smoothing: antialiased;
+          padding: 12mm 12mm;
+        }
+
+        .container {
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+
+        .card,
+        .recommendation-box,
+        header,
+        .category-title,
+        .subcategory-title {
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+        }
+
+        .card {
+          border: 1px solid #f0dfe3 !important;
+          box-shadow: none !important;
+        }
+
+        header {
+          border: 1px solid #f0dfe3 !important;
+        }
+
+        .location-banner,
+        .booking-box,
+        .btn-web,
+        .btn-route,
+        .code-container,
+        .distance-badge,
+        .transport-badge {
+          border: 1px solid #e8cee3 !important;
+        }
+
+        h2,
+        h3 {
+          page-break-after: avoid !important;
+          break-after: avoid !important;
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--bg);
+        color: var(--text-main);
+        line-height: 1.45;
+        -webkit-font-smoothing: antialiased;
+        padding: 20px 10px;
+        position: relative;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 820px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        text-align: center;
+        padding: 28px 20px 22px 20px;
+        background: var(--card-bg);
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        margin-bottom: 20px;
+        box-shadow: 0 4px 14px -2px rgba(128, 35, 58, 0.06);
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          #5c1d2e 0%,
+          #c47b8d 50%,
+          #5c1d2e 100%
+        );
+      }
+
+      .header-tag {
+        font-size: 8.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .names-title {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        color: var(--primary);
+        font-size: 32pt;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        line-height: 1.1;
+        margin-bottom: 4px;
+      }
+
+      .names-title span {
+        font-style: italic;
+        color: #b85b71;
+        font-weight: 600;
+      }
+
+      .wedding-date {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 14pt;
+        color: var(--primary);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .header-divider {
+        width: 60px;
+        height: 1px;
+        background-color: #c47b8d;
+        margin: 0 auto 14px auto;
+        opacity: 0.6;
+      }
+
+      .location-banner {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: var(--rose-soft);
+        border: 1px solid var(--border);
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 9pt;
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .location-banner i {
+        color: var(--accent);
+      }
+
+      .category-title {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        color: var(--primary);
+        font-size: 18pt;
+        font-weight: 700;
+        margin: 26px 0 14px 0;
+        padding-left: 12px;
+        border-left: 4px solid var(--accent);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .subcategory-title {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        color: var(--accent);
+        font-size: 14pt;
+        font-weight: 700;
+        margin: 18px 0 10px 0;
+        letter-spacing: 0.03em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .subcategory-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background-color: var(--border);
+        margin-left: 8px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 16px 18px;
+        border: 1px solid var(--border);
+        box-shadow: 0 2px 6px rgba(92, 29, 46, 0.03);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 12px rgba(92, 29, 46, 0.07);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .hotel-name {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 16pt;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 0.01em;
+      }
+
+      .rating-web-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .stars {
+        color: var(--star-color);
+        font-size: 9.5pt;
+        letter-spacing: 1px;
+      }
+
+      .btn-web {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background-color: var(--rose-soft);
+        color: var(--primary);
+        border: 1px solid #e8cee3;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 8pt;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .btn-web:hover {
+        background-color: var(--accent);
+        color: #ffffff;
+        border-color: var(--accent);
+      }
+
+      .card-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .info-section {
+        flex: 1;
+        min-width: 260px;
+      }
+
+      .distance-wrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .distance-badge {
+        background-color: var(--badge-bg);
+        color: var(--badge-text);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 8pt;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .btn-route {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background-color: var(--primary);
+        color: #ffffff !important;
+        border: 1px solid var(--primary);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 8pt;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s ease;
+      }
+
+      .btn-route:hover {
+        background-color: var(--accent);
+      }
+
+      .details {
+        list-style: none;
+        font-size: 9pt;
+        color: var(--text-muted);
+      }
+
+      .details li {
+        margin-bottom: 4px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .details i {
+        color: var(--accent);
+        width: 14px;
+        text-align: center;
+      }
+
+      .details a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .details a:hover {
+        text-decoration: underline;
+      }
+
+      .booking-box {
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 8.5pt;
+        min-width: 230px;
+        text-align: center;
+        align-self: center;
+        flex-shrink: 0;
+      }
+
+      .booking-box.confirmed {
+        background-color: var(--rose-soft);
+        border: 1px dashed #c47b8d;
+      }
+
+      .booking-box.pending {
+        background-color: #fff9fa;
+        border: 1px dashed #e8cee3;
+      }
+
+      .booking-title {
+        font-weight: 700;
+        margin-bottom: 4px;
+        font-size: 8pt;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .confirmed .booking-title {
+        color: var(--primary);
+      }
+
+      .pending .booking-title {
+        color: #8a5360;
+      }
+
+      .code-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 10pt;
+        background: #ffffff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        margin-top: 4px;
+      }
+
+      .recommendation-box {
+        background-color: var(--rose-soft);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: 8px;
+        padding: 14px 16px;
+        font-size: 9pt;
+        color: var(--text-main);
+        margin-bottom: 16px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .recommendation-box i {
+        color: var(--accent);
+        font-size: 12pt;
+        margin-top: 2px;
+      }
+
+      .transport-info {
+        font-size: 9pt;
+        color: var(--text-muted);
+        margin-top: 8px;
+        line-height: 1.5;
+      }
+
+      .transport-info p {
+        margin-bottom: 6px;
+      }
+
+      .transport-badge {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 8pt;
+        margin-right: 4px;
+      }
+
+      /* Tarjeta aglutinada y compacta */
+      .compact-card {
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: 10px;
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        margin-bottom: 12px;
+        page-break-inside: avoid;
+      }
+
+      .parking-intro {
+        font-size: 8pt;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+        line-height: 1.35;
+      }
+
+      .parking-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .parking-row {
+        border-top: 1px dashed var(--border);
+      }
+
+      .parking-row:first-child {
+        border-top: none;
+      }
+
+      .parking-cell {
+        padding: 6px 0;
+        vertical-align: middle;
+      }
+
+      .parking-name {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 12.5pt;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .parking-details {
+        font-size: 8pt;
+        color: var(--text-muted);
+      }
+
+      .parking-action {
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        padding: 16px;
+        font-size: 8.5pt;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor de pétalos flotantes -->
+    <div class="petals-container" aria-hidden="true">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+    </div>
+
+    <div class="container">
+      <!-- Encabezado de la Guía -->
+      <header>
+        <div class="header-tag">Guía de Alojamiento para Invitados</div>
+        <h1 class="names-title">Francisco <span>&</span> Irene</h1>
+        <div class="wedding-date">28 de Agosto de 2027 • Granada</div>
+        <div class="header-divider"></div>
+        <div class="location-banner">
+          <i class="fa-solid fa-church"></i>
+          Ceremonia: Iglesia de San Ildefonso (Acera de San Ildefonso, 4,
+          Granada)
+        </div>
+      </header>
+
+      <!-- Nueva Sección: Cómo llegar a la Iglesia -->
+      <h2 class="category-title">
+        <i
+          class="fa-solid fa-location-dot"
+          style="font-size: 14pt; margin-right: 6px"
+        ></i>
+        Cómo llegar a la Iglesia de San Ildefonso
+      </h2>
+
+      <!-- Recomendación -->
+      <div class="recommendation-box">
+        <i class="fa-solid fa-lightbulb"></i>
+        <div>
+          <strong>Recomendación para el convite:</strong> Aunque para la
+          ceremonia se puede llegar en transporte público o a pie desde el
+          centro, os recomendamos acudir en coche o coordinar el desplazamiento
+          para poder trasladaros cómodamente al lugar de la celebración tras la
+          misa.
+        </div>
+      </div>
+
+      <!-- Parkings Recomendados COMPACTOS -->
+      <h3 class="subcategory-title">Parkings Recomendados (De Pago)</h3>
+
+      <div class="compact-card">
+        <p class="parking-intro">
+          La zona de la Acera de San Ildefonso tiene aparcamiento regulado
+          limitado. Os recomendamos estos aparcamientos cubiertos para la
+          ceremonia:
+        </p>
+        <table class="parking-table">
+          <tr class="parking-row">
+            <td class="parking-cell">
+              <span class="parking-name">Parking Triunfo</span>
+              <div class="parking-details">
+                Avenida de la Constitución •
+                <strong style="color: var(--accent)">6 min a pie</strong>
+                (opción más cercana)
+              </div>
+            </td>
+            <td class="parking-cell parking-action">
+              <a
+                href="https://maps.google.com/?q=Parking+Triunfo+Granada"
+                target="_blank"
+                class="btn-route"
+                >Ver mapa</a
+              >
+            </td>
+          </tr>
+          <tr class="parking-row">
+            <td class="parking-cell">
+              <span class="parking-name">Parking Severo Ochoa</span>
+              <div class="parking-details">
+                Zona Universidad • <strong>11 min a pie</strong>
+              </div>
+            </td>
+            <td class="parking-cell parking-action">
+              <a
+                href="https://maps.google.com/?q=Parking+Severo+Ochoa+Granada"
+                target="_blank"
+                class="btn-route"
+                >Ver mapa</a
+              >
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Transporte Público -->
+      <h3 class="subcategory-title">Transporte Público (Autobús Urbano)</h3>
+      <div class="card" style="margin-bottom: 20px">
+        <div class="transport-info">
+          <p>
+            Las paradas más cercanas son
+            <strong>"Acera de San Ildefonso"</strong> (en la misma puerta) o
+            <strong>"Jardines del Triunfo / Av. del Hospicio"</strong> (a 2 min
+            a pie).
+          </p>
+          <p style="margin-top: 8px">
+            <i
+              class="fa-solid fa-bus"
+              style="color: var(--accent); margin-right: 6px"
+            ></i>
+            <strong>Líneas con parada directa en la puerta:</strong>
+            <span class="transport-badge">C31</span>
+            <span class="transport-badge">C32</span>
+          </p>
+          <p>
+            <i
+              class="fa-solid fa-bus"
+              style="color: var(--accent); margin-right: 6px"
+            ></i>
+            <strong
+              >Líneas con parada en Triunfo (Gran Vía / Av.
+              Constitución):</strong
+            >
+            <span class="transport-badge">8</span>
+            <span class="transport-badge">21</span>
+            <span class="transport-badge">33</span>
+            <span class="transport-badge">C34</span>
+          </p>
+          <p
+            style="
+              margin-top: 8px;
+              border-top: 1px dashed var(--border);
+              padding-top: 8px;
+            "
+          >
+            <i
+              class="fa-regular fa-credit-card"
+              style="color: var(--accent); margin-right: 6px"
+            ></i>
+            <strong>Pago:</strong> Se permite pago con tarjeta / contactless o
+            efectivo directo al conductor.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sección de Hoteles Recomendados -->
+      <h2 class="category-title">
+        <i
+          class="fa-solid fa-hotel"
+          style="font-size: 14pt; margin-right: 6px"
+        ></i>
+        Hoteles Recomendados
+      </h2>
+
+      <!-- Recomendación -->
+      <div class="recommendation-box">
+        <i class="fa-solid fa-lightbulb"></i>
+        <div>
+          <strong>Información para reservas:</strong> Los enlaces de reserva
+          vienen preconfigurados para el fin de semana de la boda (del 27 al 29
+          de agosto) y con el código de descuento ya aplicado. Podéis modificar
+          las fechas o el número de personas libremente al acceder a la web de
+          cada hotel.
+        </div>
+      </div>
+
+      <!-- Subcategoría 4 Estrellas -->
+      <h3 class="subcategory-title">Hoteles de 4 Estrellas</h3>
+
+      <div class="grid">
+        <!-- Card 1: Occidental Granada -->
+        <div class="card">
+          <div class="card-header">
+            <span class="hotel-name">Occidental Granada</span>
+            <div class="rating-web-wrapper">
+              <span class="stars"
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ></span>
+              <a
+                href="https://www.barcelo.com/es-es/occidental-granada/"
+                target="_blank"
+                class="btn-web"
+              >
+                <i class="fa-solid fa-globe"></i> Web
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="info-section">
+              <div class="distance-wrapper">
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-car"></i> 10 min en coche</span
+                >
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-person-walking"></i> 34 min a pie</span
+                >
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&origin=Iglesia+de+San+Ildefonso+Granada&destination=Barcelo+Granada+Congress+Calle+Maestro+Montero+12+Granada"
+                  target="_blank"
+                  class="btn-route"
+                >
+                  <i class="fa-solid fa-map-location-dot"></i> Ruta
+                </a>
+              </div>
+              <ul class="details">
+                <li>
+                  <i class="fa-solid fa-location-dot"></i> Calle Alhamar, 46,
+                  18004 Granada
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+34958290303">+34 958 29 03 03</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:granada.mos2@occidentalhotels.com"
+                    >granada.mos2@occidentalhotels.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="booking-box confirmed">
+              <div class="booking-title">Código de Descuento</div>
+              <div class="code-container">
+                <i class="fa-solid fa-tag"></i> ?????
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Hotel Granada Center -->
+        <div class="card">
+          <div class="card-header">
+            <span class="hotel-name">Hotel Granada Center</span>
+            <div class="rating-web-wrapper">
+              <span class="stars"
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ></span>
+              <a
+                href="https://www.hotelescenter.es/bookingstep1/?chainSelectorValue=406&checkin=27%2F08%2F2027&idtokenprovider=100120543&currency=EUR&idchain=500343&clientCode=280827&hsri=02080&lang=es&nights=2&parties=W3siYWR1bHRzIjoyLCJjaGlsZHJlbiI6W119XQ%3D%3D&type=chain&step=1&home=https%3A%2F%2Fwww.hotelescenter.es%2Fhotel-granada-center%2F"
+                target="_blank"
+                class="btn-web"
+              >
+                <i class="fa-solid fa-globe"></i> Web
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="info-section">
+              <div class="distance-wrapper">
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-car"></i> 6 min en coche</span
+                >
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-person-walking"></i> 15 min a pie</span
+                >
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&origin=Iglesia+de+San+Ildefonso+Granada&destination=Hotel+Granada+Center+Av+de+Fuente+Nueva+3+Granada"
+                  target="_blank"
+                  class="btn-route"
+                >
+                  <i class="fa-solid fa-map-location-dot"></i> Ruta
+                </a>
+              </div>
+              <ul class="details">
+                <li>
+                  <i class="fa-solid fa-location-dot"></i> Avenida Fuente Nueva,
+                  7, 18002 Granada
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+34958205000">+34 958 20 50 00</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:granada@hotelescenter.com"
+                    >granada@hotelescenter.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="booking-box confirmed">
+              <div class="booking-title">Código de Descuento</div>
+              <div class="code-container">
+                <i class="fa-solid fa-tag"></i> 280827
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Hotel Andalucía Center -->
+        <div class="card">
+          <div class="card-header">
+            <span class="hotel-name">Hotel Andalucía Center</span>
+            <div class="rating-web-wrapper">
+              <span class="stars"
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ></span>
+              <a
+                href="https://www.hotelescenter.es/bookingstep1/?chainSelectorValue=407&checkin=27%2F08%2F2027&idtokenprovider=57274508&currency=EUR&idchain=500343&clientCode=280827&hsri=02080&lang=es&nights=2&parties=W3siYWR1bHRzIjoyLCJjaGlsZHJlbiI6W119XQ%3D%3D&type=chain&step=1&home=https%3A%2F%2Fwww.hotelescenter.es%2F"
+                target="_blank"
+                class="btn-web"
+              >
+                <i class="fa-solid fa-globe"></i> Web
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="info-section">
+              <div class="distance-wrapper">
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-car"></i> 14 min en coche</span
+                >
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-person-walking"></i> 40 min a pie</span
+                >
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&origin=Iglesia+de+San+Ildefonso+Granada&destination=Hotel+Andalucia+Center+Av+de+la+Ilustracion+5+Granada"
+                  target="_blank"
+                  class="btn-route"
+                >
+                  <i class="fa-solid fa-map-location-dot"></i> Ruta
+                </a>
+              </div>
+              <ul class="details">
+                <li>
+                  <i class="fa-solid fa-location-dot"></i> Avenida América, 3,
+                  18006 Granada
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+34958181500">+34 958 18 15 00</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:andalucia@hotelescenter.com"
+                    >andaluia@hotelescenter.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="booking-box confirmed">
+              <div class="booking-title">Código de Descuento</div>
+              <div class="code-container">
+                <i class="fa-solid fa-tag"></i> 280827
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: DWO Urban Granada -->
+        <div class="card">
+          <div class="card-header">
+            <span class="hotel-name">DWO Urban Granada</span>
+            <div class="rating-web-wrapper">
+              <span class="stars"
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ></span>
+              <a
+                href="https://www.bookings.dwohotels.com/booking1?sid=6164d343-2682-49fe-a3ac-13adba0b570a&_gl=1*18sms0r*_gcl_au*NzYzMTU4MzIuMTc4NzY2OTQ4Nw..*_ga*NzUxOTg4MTQzLjE3ODc2Njk0ODc.*_ga_XJM4MHBGDN*czE3ODc2Njk0ODckbzEkZzEkdDE3ODc2Njk2OTIkajQwJGwwJGgxNDYwMDUzNDkw&namespace=checkin-urban-granada"
+                target="_blank"
+                class="btn-web"
+              >
+                <i class="fa-solid fa-globe"></i> Web
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="info-section">
+              <div class="distance-wrapper">
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-car"></i> 10 min en coche</span
+                >
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-person-walking"></i> 22 min a pie</span
+                >
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&origin=Iglesia+de+San+Ildefonso+Granada&destination=DWO+Urban+Granada+Camino+de+Ronda+107+Granada"
+                  target="_blank"
+                  class="btn-route"
+                >
+                  <i class="fa-solid fa-map-location-dot"></i> Ruta
+                </a>
+              </div>
+              <ul class="details">
+                <li>
+                  <i class="fa-solid fa-location-dot"></i> Camino de Ronda, 107,
+                  18003 Granada
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+34958100148">+34 958 10 01 48</a>
+                  /
+                  <a href="tel:+34673662974">+34 673 66 29 74</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:reservas.granada@dwohotels.com"
+                    >reservas.granada@dwohotels.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="booking-box confirmed">
+              <div class="booking-title">Código de Descuento</div>
+              <div class="code-container">
+                <i class="fa-solid fa-tag"></i> BODAFRANCISCOEIRENE
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subcategoría 3 Estrellas -->
+      <h3 class="subcategory-title">Hoteles de 3 Estrellas</h3>
+
+      <div class="grid">
+        <!-- Card 1: Hotel Don Juan -->
+        <div class="card">
+          <div class="card-header">
+            <span class="hotel-name">Hotel Don Juan</span>
+            <div class="rating-web-wrapper">
+              <span class="stars"
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </span>
+              <a
+                href="https://www.hoteldonjuan.com/disponibilidad.html?id_hotel=HTL00086&start=2027-08-27&end=2027-08-29&guests[0][adults]=2&promotion_code=RODON#monoHotelAvail/EUR"
+                target="_blank"
+                class="btn-web"
+              >
+                <i class="fa-solid fa-globe"></i> Web
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="info-section">
+              <div class="distance-wrapper">
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-car"></i> 12 min en coche</span
+                >
+                <span class="distance-badge"
+                  ><i class="fa-solid fa-person-walking"></i> 17 min a pie</span
+                >
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&origin=Iglesia+de+San+Ildefonso+Granada&destination=Hotel+Don+Juan+Calle+Martinez+de+la+Rosa+9+Granada"
+                  target="_blank"
+                  class="btn-route"
+                >
+                  <i class="fa-solid fa-map-location-dot"></i> Ruta
+                </a>
+              </div>
+              <ul class="details">
+                <li>
+                  <i class="fa-solid fa-location-dot"></i> Calle Martínez de la
+                  Rosa, 9, 18002 Granada
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+34958285811">+34 958 28 58 11</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:reservas@hoteldonjuan.com"
+                    >reservas@hoteldonjuan.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="booking-box confirmed">
+              <div class="booking-title">Código de Descuento</div>
+              <div class="code-container">
+                <i class="fa-solid fa-tag"></i> RODON
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <footer>
+        <p>¡Esperamos compartir con vosotros este día tan especial!</p>
+      </footer>
+    </div>
+  </body>
+</html>
