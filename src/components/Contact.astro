@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useContent } from "@i18n/utils";
+import { profile } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const { contact } = useContent(lang);
+---
+
+<section id="contact" class="relative isolate overflow-hidden border-t border-line">
+  <div class="contact-glow pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-full" aria-hidden="true"></div>
+  <div class="mx-auto max-w-page px-5 py-28 text-center md:px-8 md:py-40">
+    <p class="mb-4 font-mono text-sm text-accent" data-reveal>05</p>
+    <h2 class="text-[clamp(2.75rem,8vw,6rem)] font-bold leading-none tracking-[-0.04em]" data-reveal>
+      {contact.title}
+    </h2>
+    <p class="mx-auto mt-6 max-w-md text-lg text-muted" data-reveal style="--delay:80ms">{contact.text}</p>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3" data-reveal style="--delay:160ms">
+      <a
+        href={`mailto:${profile.email}`}
+        class="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-medium text-bg transition-transform hover:-translate-y-0.5"
+      >
+        <Icon name="mail" class="h-5 w-5" />
+        {contact.cta}
+      </a>
+      <button
+        id="copy-email"
+        type="button"
+        data-email={profile.email}
+        data-copied={contact.copied}
+        class="inline-flex items-center rounded-full border border-line px-7 py-3.5 font-medium transition-colors hover:border-fg/40"
+      >
+        <span>{contact.copy}</span>
+      </button>
+    </div>
+
+    <p class="mt-6 break-all font-mono text-sm text-muted" data-reveal style="--delay:200ms">{profile.email}</p>
+
+    <div class="mt-10 flex justify-center gap-2" data-reveal style="--delay:240ms">
+      <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social"><Icon name="github" /></a>
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social"><Icon name="linkedin" /></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-glow {
+    background: radial-gradient(ellipse 60% 50% at 50% 100%, rgb(var(--accent) / 0.16), transparent 70%);
+  }
+  .social {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    border: 1px solid rgb(var(--line));
+    color: rgb(var(--muted));
+    font-size: 1.35rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .social:hover {
+    color: rgb(var(--fg));
+    border-color: rgb(var(--fg) / 0.4);
+  }
+</style>
+
+<script>
+  const button = document.getElementById("copy-email") as HTMLButtonElement;
+  const label = button.querySelector("span")!;
+  const original = label.textContent;
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(button.dataset.email!);
+      label.textContent = button.dataset.copied!;
+      setTimeout(() => (label.textContent = original), 2000);
+    } catch {
+      window.location.href = `mailto:${button.dataset.email}`;
+    }
+  });
+</script>

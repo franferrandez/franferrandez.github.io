@@ -1,63 +1,118 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useContent } from "@i18n/utils";
+import { profile } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const { hero } = useContent(lang);
+const [first, ...rest] = profile.name.split(" ");
 ---
 
-<section>
-  <div>
-    <h1 class="text-4xl">Francisco Ferrández</h1>
-    <div id="social">
-      <a
-        class="custom-hover"
-        href="https://github.com/franferrandez"
-        target="_blank"
-        rel="noreferrer nopener"><Icon name="github" /></a
-      >
-      <a
-        class="custom-hover" 
-        href="mailto:franciscoferrandezmartinez@gmail.com"
-        ><Icon name="mail" /></a
-      >
-      <a
-        class="custom-hover"
-        href="https://www.linkedin.com/in/franferrandez/"
-        target="_blank"
-        rel="noreferrer nopener"><Icon name="linkedin" /></a
-      >
+<section id="top" class="relative isolate overflow-hidden">
+  <div class="hero-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+  <div class="hero-glow pointer-events-none absolute -z-10" aria-hidden="true"></div>
+
+  <div class="mx-auto flex min-h-[100svh] max-w-page flex-col justify-center px-5 pb-20 pt-28 md:px-8">
+    <p class="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted md:text-sm" data-reveal>
+      {hero.eyebrow}
+    </p>
+
+    <h1
+      class="text-[clamp(3rem,11vw,8.5rem)] font-bold leading-[0.9] tracking-[-0.04em]"
+      data-reveal
+      style="--delay:80ms"
+    >
+      {first}<br /><span class="text-muted/60">{rest.join(" ")}</span>
+    </h1>
+
+    <div class="mt-10 grid gap-8 md:mt-14 md:grid-cols-[1fr_auto] md:items-end">
+      <div data-reveal style="--delay:160ms">
+        <p class="text-2xl font-semibold tracking-tight md:text-3xl">
+          {hero.role}<span class="text-accent">.</span>
+        </p>
+        <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">{hero.tagline}</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3" data-reveal style="--delay:240ms">
+        <a
+          href="#contact"
+          class="group inline-flex items-center gap-2 rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
+        >
+          {hero.ctaPrimary}
+          <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">→</span>
+        </a>
+        <a
+          href="#experience"
+          class="inline-flex items-center rounded-full border border-line px-6 py-3 text-sm font-medium transition-colors hover:border-fg/40"
+        >
+          {hero.ctaSecondary}
+        </a>
+        <div class="flex items-center gap-1 pl-1">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social"><Icon name="github" /></a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social"><Icon name="linkedin" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-16 inline-flex w-fit items-center gap-3 rounded-full border border-line bg-surface/60 px-4 py-2 text-xs text-muted backdrop-blur md:mt-20 md:text-sm"
+      data-reveal
+      style="--delay:320ms"
+    >
+      <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:hidden"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+      </span>
+      {hero.status}
     </div>
   </div>
-  <hr />
-  <h3 class="text-xl">Full Stack Developer</h3>
 </section>
 
 <style>
-  section {
-    margin-bottom: 2rem;
-  }
-  
-  hr {
-    width: 100%;
-  }
-
-  [data-icon] {
-    font-size: 2rem;
-  }
-  #social {
-    display: flex;
-    gap: 10px;
-  }
-  div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .custom-hover {
-    display: inline-block; /* Asegura que el elemento se trate como un bloque en línea para transformaciones */
-    transition: transform 0.2s, color 0.2s;
+  .hero-grid {
+    background-image:
+      linear-gradient(rgb(var(--line) / 0.7) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--line) / 0.7) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
   }
 
-  .custom-hover:hover {
-    transform: scale(1.1);
-    color: rgb(var(--accent));
+  .hero-glow {
+    top: -10%;
+    right: -10%;
+    width: min(60vw, 720px);
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgb(var(--accent) / 0.22), transparent 65%);
+    filter: blur(40px);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes drift {
+    to {
+      transform: translate(-12%, 18%) scale(1.15);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glow {
+      animation: none;
+    }
+  }
+
+  .social {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    color: rgb(var(--muted));
+    font-size: 1.35rem;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .social:hover {
+    color: rgb(var(--fg));
+    background-color: rgb(var(--line) / 0.6);
   }
 </style>

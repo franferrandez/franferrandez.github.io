@@ -1,0 +1,39 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { getLangFromUrl, useContent } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const { experience } = useContent(lang);
+---
+
+<section id="experience" class="border-y border-line bg-surface/40">
+  <div class="mx-auto max-w-page px-5 py-24 md:px-8 md:py-32">
+    <SectionHeading index="02" title={experience.title} />
+
+    <ol class="relative">
+      {
+        experience.items.map((job, i) => (
+          <li
+            class="group grid gap-2 border-t border-line py-8 md:grid-cols-[13rem_1fr] md:gap-10 md:py-10"
+            data-reveal
+            style={`--delay:${i * 60}ms`}
+          >
+            <p class="font-mono text-sm text-muted">
+              {i === 0 && <span class="mr-2 inline-block h-1.5 w-1.5 -translate-y-0.5 rounded-full bg-accent" />}
+              {job.period}
+            </p>
+            <div>
+              <h3 class="text-xl font-semibold tracking-tight md:text-2xl">
+                {job.role}
+                <span class="text-muted"> · {job.company}</span>
+              </h3>
+              <p class="mt-1 text-sm text-muted">{job.place}</p>
+              <p class="mt-4 max-w-2xl leading-relaxed text-muted">{job.description}</p>
+              <p class="mt-4 font-mono text-xs text-muted/80">{job.stack.join(" · ")}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

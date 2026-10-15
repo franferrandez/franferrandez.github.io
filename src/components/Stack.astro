@@ -1,0 +1,77 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import { getLangFromUrl, useContent } from "@i18n/utils";
+import { skills } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const { stack } = useContent(lang);
+---
+
+<section id="stack" class="border-t border-line">
+  <div class="mx-auto max-w-page px-5 py-24 md:px-8 md:py-32">
+    <SectionHeading index="04" title={stack.title} intro={stack.intro} />
+
+    <p
+      class="mb-14 flex flex-wrap items-center gap-x-3 gap-y-1 border-l-2 border-accent pl-4 text-sm"
+      data-reveal
+    >
+      <span class="font-mono text-xs uppercase tracking-wider text-accent">{stack.now.label}</span>
+      <span class="text-fg">{stack.now.items.join(" · ")}</span>
+    </p>
+
+    <div class="grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        skills.map(({ group, items }, i) => (
+          <div data-reveal style={`--delay:${(i % 3) * 80}ms`}>
+            <h3 class="mb-2 font-mono text-xs uppercase tracking-wider text-muted">{stack.groups[group]}</h3>
+            <ul>
+              {items.map(([name, level]) => (
+                <li class="flex items-center justify-between gap-4 border-b border-line py-3">
+                  <span class={level === 3 ? "text-fg" : "text-muted"}>{name}</span>
+                  <span class="meter" data-level={level} title={stack.levels[level - 1].name}>
+                    <span class="sr-only">{stack.levels[level - 1].name}</span>
+                    <i></i><i></i><i></i>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <dl class="mt-16 grid gap-6 text-sm sm:grid-cols-3" data-reveal>
+      {
+        stack.levels.map((level, i) => (
+          <div class="flex gap-3">
+            <dt class="shrink-0 pt-1.5">
+              <span class="meter" data-level={i + 1} aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="sr-only">{level.name}</span>
+            </dt>
+            <dd class="text-muted">
+              <span class="font-medium text-fg">{level.name}.</span> {level.text}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .meter {
+    display: inline-flex;
+    gap: 3px;
+  }
+  .meter i {
+    width: 14px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgb(var(--line));
+  }
+  .meter[data-level="1"] i:nth-of-type(-n + 1),
+  .meter[data-level="2"] i:nth-of-type(-n + 2),
+  .meter[data-level="3"] i {
+    background: rgb(var(--accent));
+  }
+</style>

@@ -5,6 +5,10 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://franferrandez.github.io',
-  integrations: [tailwind(), icon()],  
+  site: 'https://franferrandez.dev',
+  integrations: [tailwind(), icon()],
+  // La versión en español vive ahora en la raíz
+  redirects: {
+    '/es': '/',
+  },
 });

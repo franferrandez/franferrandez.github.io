@@ -1,195 +1,181 @@
 ---
-import Toggle from "./Toggle.astro";
 import { Icon } from "astro-icon/components";
-import LanguageDropdown from "./LanguageDropdown.astro";
+import { getLangFromUrl, useContent, localizedPath } from "@i18n/utils";
+import { languages } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const c = useContent(lang);
+const other = languages.find((l) => l.code !== lang)!;
+
+const links = [
+  { id: "about", label: c.nav.about },
+  { id: "experience", label: c.nav.experience },
+  { id: "projects", label: c.nav.projects },
+  { id: "stack", label: c.nav.stack },
+  { id: "contact", label: c.nav.contact },
+];
 ---
 
 <header
-  class="pt-1 pb-1 bg-amber-200 text-amber-800 dark:bg-amber-300 dark:text-amber-950 shadow-md"
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300"
 >
-  <section class="ml-10 mr-10 mb-3">
-    <div class="flex items-center justify-between mt-2">
-      <a href="/" class="flex items-center gap-4 logo">
-        <!-- Envolvemos en un <a> -->
-        <!-- <img class="w-16 h-16" src="./img/franferrandez.png" alt="icon" /> -->
-        <Icon name="franferrandez" class="w-12 h-12 hover:size-2" />
-        <div class="flex flex-col">
-          <h1 class="text-2xl font-mono font-semibold">FRANCISCO</h1>
-          <h1 class="text-xs font-mono">FERRÁNDEZ MARTÍNEZ</h1>
-        </div>
-      </a>
-      <div class="flex movil gap-3 items-center">
-        <div class="flex gap-2 items-center">
-          <a
-            href="https://github.com/franferrandez"
-            target="_blank"
-            rel="noreferrer nopener"
-            ><Icon
-              name="github"
-              class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
-            /></a
-          >
-          <a href="mailto:franciscoferrandezmartinez@gmail.com"
-            ><Icon
-              name="mail"
-              class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
-            /></a
-          >
-          <a
-            href="https://www.linkedin.com/in/franferrandez/"
-            target="_blank"
-            rel="noreferrer nopener"
-            ><Icon
-              name="linkedin"
-              class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
-            /></a
-          >
-        </div>
-        <span class="separator">|</span>
-        <Toggle />
-        <span class="separator">|</span>
-        <LanguageDropdown />
-      </div>
-      <Icon id="menuToggle" name="menu" />
-    </div>
-  </section>
+  <nav class="mx-auto flex h-16 max-w-page items-center justify-between px-5 md:px-8">
+    <a href="#top" class="flex items-center gap-2.5 font-mono text-sm font-medium" aria-label="Inicio">
+      <Icon name="franferrandez" class="h-7 w-7 text-fg" />
+      <span class="hidden sm:inline">franferrandez<span class="text-accent">.dev</span></span>
+    </a>
 
-  <!-- Menú desplegable en móviles (oculto inicialmente) -->
-  <section
-    id="mobileMenu"
-    class="pt-2 pb-4 pl-16 pr-16 bg-amber-200 text-amber-800 dark:bg-amber-300 dark:text-amber-950 shadow-md"
-  >
-    <div class="flex justify-between">
-      <div class="flex gap-2">
-        <a
-          href="https://github.com/franferrandez"
-          target="_blank"
-          rel="noreferrer nopener"
-          ><Icon
-            name="github"
-            class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
-          /></a
-        >
-        <a href="mailto:franciscoferrandezmartinez@gmail.com"
-          ><Icon
-            name="mail"
-            class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
-          /></a
-        >
-        <a
-          href="https://www.linkedin.com/in/franferrandez/"
-          target="_blank"
-          rel="noreferrer nopener"
-          ><Icon
-            name="linkedin"
-            class="w-6 h-6 hover:text-amber-950 dark:hover:text-amber-800"
-          /></a
-        >
-      </div>
-      <div class="flex gap-2 items-normal">
-        <Toggle />
-        <LanguageDropdown />
-      </div>
+    <ul class="hidden items-center gap-1 md:flex">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={`#${link.id}`}
+              data-nav={link.id}
+              class="rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-fg [&.active]:text-fg"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-1">
+      <a
+        href={localizedPath(other.code)}
+        hreflang={other.code}
+        class="rounded-full px-3 py-2 font-mono text-xs font-medium text-muted transition-colors hover:text-fg"
+        aria-label={c.nav.language}
+        title={other.label}>{other.short}</a
+      >
+      <button
+        id="theme-toggle"
+        type="button"
+        class="grid h-9 w-9 place-items-center rounded-full text-muted transition-colors hover:text-fg"
+        aria-label={c.nav.theme}
+      >
+        <!-- sol (visible en oscuro) / luna (visible en claro) -->
+        <svg class="hidden h-[18px] w-[18px] dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="h-[18px] w-[18px] dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+      </button>
+      <button
+        id="menu-toggle"
+        type="button"
+        class="grid h-9 w-9 place-items-center rounded-full text-muted transition-colors hover:text-fg md:hidden"
+        aria-label={c.nav.menu}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
     </div>
-  </section>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    class="pointer-events-none absolute inset-x-0 top-16 h-[calc(100dvh-4rem)] bg-bg/95 opacity-0 backdrop-blur-xl transition-opacity duration-300 md:hidden [&.open]:pointer-events-auto [&.open]:opacity-100"
+  >
+    <ul class="flex flex-col gap-1 px-5 pt-6">
+      {
+        links.map((link, i) => (
+          <li class="menu-item" style={`--i:${i}`}>
+            <a
+              href={`#${link.id}`}
+              class="flex items-baseline gap-4 border-b border-line py-4 text-2xl font-medium"
+            >
+              <span class="font-mono text-xs text-accent">0{i + 1}</span>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
-<!-- <hr class="bg-white "/> -->
 
 <style>
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    corner-shape: bevel;
-    border-bottom-right-radius: 5% 25px;
+  #site-header.scrolled,
+  #site-header:has(#mobile-menu.open) {
+    background-color: rgb(var(--bg) / 0.75);
+    border-color: rgb(var(--line));
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
 
-  hr {
-    width: 100%;
+  .menu-icon {
+    position: relative;
+    width: 18px;
+    height: 10px;
   }
-
-  [data-icon] {
-    font-size: 2rem;
-  }
-
-  .logo {
-    user-select: none; /* Evita que el texto sea seleccionable */
-    text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
-  }
-
-  .logo h1 {
-    color: inherit; /* Asegura que el color del texto se mantenga igual */
-  }
-
-  #menuToggle {
-    display: none;
-  }
-
-  #mobileMenu {
-    position: absolute; /* posicionado relativo al header */
+  .menu-icon span {
+    position: absolute;
     left: 0;
-    right: 0;
-    top: 100%; /* justo debajo del header */
+    height: 1.5px;
+    width: 100%;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.3s ease, top 0.3s ease;
+  }
+  .menu-icon span:first-child { top: 0; }
+  .menu-icon span:last-child { top: 100%; }
+  [aria-expanded="true"] .menu-icon span:first-child { top: 50%; transform: rotate(45deg); }
+  [aria-expanded="true"] .menu-icon span:last-child { top: 50%; transform: rotate(-45deg); }
+
+  .menu-item {
     opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    max-height: 0;
-    overflow: hidden;
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease,
-      max-height 0.35s ease;
-
-    corner-shape: bevel;
-    border-bottom-right-radius: 10% 50px;
-    width: 95%;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
-
-  .separator {
-    margin: 0 0.5rem;
-  }
-
-  @media (max-width: 625px) {
-    .movil {
-      display: none;
-    }
-
-    #menuToggle {
-      display: block;
-      cursor: pointer;
-    }
-
-    #menuToggle:hover {
-      font-size: 2.1rem;
-    }
-
-    #mobileMenu.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-      max-height: 500px; /* ajusta según contenido */
-    }
-    .separator {
-      display: none;
-    }
+  :global(#mobile-menu.open) .menu-item {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i) * 50ms + 80ms);
   }
 </style>
 
-<!-- JavaScript para alternar el menú -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.getElementById("menuToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
+  const header = document.getElementById("site-header")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const menuToggle = document.getElementById("menu-toggle")!;
+  const themeToggle = document.getElementById("theme-toggle")!;
 
-    console.log("no pasa", menuToggle, mobileMenu);
-    // Verifica si existe el botón para alternar el menú
-    if (!menuToggle || !mobileMenu) return;
+  // Fondo del header al hacer scroll
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 
-    console.log("pasa");
-    // Agregar evento de clic para mostrar/ocultar el menú
-    menuToggle.addEventListener("click", function (event) {
-      event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-      mobileMenu.classList.toggle("active"); // Alterna la clase 'active' en el menú
-    });
+  // Tema
+  themeToggle.addEventListener("click", () => {
+    const dark = document.documentElement.classList.toggle("dark");
+    try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch {}
+  });
+
+  // Menú móvil
+  const setMenu = (open: boolean) => {
+    menu.classList.toggle("open", open);
+    menuToggle.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+  menuToggle.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
+  matchMedia("(min-width: 768px)").addEventListener("change", (e) => e.matches && setMenu(false));
+
+  // Enlace activo según la sección visible
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav]");
+  const spy = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        navLinks.forEach((l) => l.classList.toggle("active", l.dataset.nav === entry.target.id));
+      }
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  navLinks.forEach((l) => {
+    const section = document.getElementById(l.dataset.nav!);
+    if (section) spy.observe(section);
   });
 </script>

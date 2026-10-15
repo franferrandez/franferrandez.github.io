@@ -1,62 +1,17 @@
 ---
-import { Icon } from "astro-icon/components";
-import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { getLangFromUrl, useContent } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const currentYear = new Date().getFullYear();
-const rightsText = `© ${currentYear} ${t("footer.rights")}`;
+const { footer } = useContent(lang);
+const year = new Date().getFullYear();
 ---
 
-<footer
-  class="flex flex-col pt-4 pb-4 justify-center items-center gap-6 bg-amber-200 text-amber-800 dark:bg-amber-300 dark:text-amber-950 shadow-md"
->
-  <!-- <span>Desarrollado con Astro</span>
-    <Icon name="astro" class="astro-icon" />
-    <span>y Tailwind CSS</span>
-    <Icon name="tailwind" class="tailwind-icon" /> -->
-  <div class="font-mono text-lg text-center">{rightsText}</div>
-  <div class="flex gap-6">
-    <a
-      href="https://github.com/franferrandez"
-      target="_blank"
-      rel="noreferrer nopener"
-      ><Icon
-        name="github"
-        class="hover:text-amber-950 dark:hover:text-amber-800"
-      /></a
-    >
-    <a href="mailto:franciscoferrandezmartinez@gmail.com"
-      ><Icon
-        name="mail"
-        class="hover:text-amber-950 dark:hover:text-amber-800"
-      /></a
-    >
-    <a
-      href="https://www.linkedin.com/in/franferrandez/"
-      target="_blank"
-      rel="noreferrer nopener"
-      ><Icon
-        name="linkedin"
-        class="hover:text-amber-950 dark:hover:text-amber-800"
-      /></a
-    >
+<footer class="border-t border-line">
+  <div
+    class="mx-auto flex max-w-page flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-muted md:flex-row md:px-8"
+  >
+    <p>© {year} {footer.rights}</p>
+    <p class="font-mono text-xs">{footer.built}</p>
+    <a href="#top" class="transition-colors hover:text-fg">{footer.top} ↑</a>
   </div>
 </footer>
-
-<style>
-  [data-icon] {
-    font-size: 3rem;
-  }
-  a {
-    display: inline-block; /* Asegura que el elemento se trate como un bloque en línea para transformaciones */
-    transition:
-      transform 0.2s,
-      color 0.2s;
-  }
-
-  /*a:hover {
-  /  transform: scale(1.1);
-  }
-  */
-</style>
