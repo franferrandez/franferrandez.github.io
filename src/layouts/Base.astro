@@ -12,7 +12,7 @@ import { languages } from "@i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
 const c = useContent(lang);
-const site = Astro.site ?? new URL("https://franferrandez.dev");
+const site = Astro.site ?? new URL("https://franferrandez.github.io");
 const canonical = new URL(localizedPath(lang), site);
 ---
 
