@@ -11,7 +11,7 @@ const es = {
   meta: {
     title: "Francisco Ferrández · Ingeniero informático",
     description:
-      "Portfolio de Francisco Ferrández: ingeniero informático especializado en backend (.NET, Spring Boot) y pipelines de CI/CD.",
+      "Francisco Ferrández, ingeniero informático en Castellón. Desarrollo backend con Java, Spring Boot y .NET, y automatizo despliegues.",
   },
   seo: {
     jobTitle: "Analista de software",
@@ -35,26 +35,26 @@ const es = {
     language: "Cambiar idioma",
   },
   hero: {
-    eyebrow: "Ingeniero informático · Castellón, España",
+    eyebrow: "Ingeniero informático · Castellón",
     role: "Backend & CI/CD",
     tagline:
-      "Construyo servicios backend con .NET y Spring Boot y automatizo su camino a producción con pipelines de integración y despliegue continuo.",
-    status: "Analista de software · Gerencia Informática de la Seguridad Social",
+      "Desarrollo servicios backend con Java y .NET, y automatizo cómo llegan a producción.",
+    status: "Analista de software en la GISS",
     ctaPrimary: "Hablemos",
     ctaSecondary: "Ver experiencia",
   },
   about: {
     title: "Sobre mí",
     paragraphs: [
-      "Soy ingeniero informático por la Universidad de Alicante y me apasionan el desarrollo de software y la automatización de procesos: cualquier tarea repetitiva es candidata a convertirse en un script o en un pipeline.",
-      "He pasado por el soporte IT en industria, el desarrollo full stack con Angular y .NET y el desarrollo backend en la nube con Azure. Desde junio de 2026 soy analista de software en la Gerencia Informática de la Seguridad Social (GISS) en Castellón, tras aprobar la oposición de Gestión de Sistemas e Informática.",
-      "Me considero una persona resolutiva, comunicativa e inquieta. Disfruto trabajando en equipo y aprendiendo algo nuevo en cada proyecto.",
+      "Soy ingeniero informático por la Universidad de Alicante. Me gusta construir software y, sobre todo, automatizar: si algo se repite, acabo convirtiéndolo en un script.",
+      "Empecé dando soporte IT en una fábrica, pasé al desarrollo full stack con Angular y .NET y después al backend en Azure. Desde junio de 2026 soy analista de software en la Gerencia Informática de la Seguridad Social, en Castellón, tras aprobar la oposición.",
+      "Soy resolutivo, comunicativo y curioso. Disfruto trabajando en equipo y aprendiendo algo nuevo en cada proyecto.",
     ],
     facts: [
       { label: "Experiencia", value: "4+ años" },
       { label: "Formación", value: "Ing. Informática · UA (2019–2023)" },
       { label: "Idiomas", value: "ES · VA (C1) · EN (B1)" },
-      { label: "Base", value: "Castellón" },
+      { label: "Ubicación", value: "Castellón" },
     ],
   },
   experience: {
@@ -66,7 +66,7 @@ const es = {
         place: "Unidad Provincial de Informática · Castellón",
         period: "jun 2026 — actualidad",
         description:
-          "Desarrollo de servicios backend con Spring Boot y gestión de pipelines de integración y despliegue continuo con Jenkins y Nexus.",
+          "Desarrollo servicios con Spring Boot y mantengo los pipelines de integración y despliegue con Jenkins y Nexus.",
         stack: ["Java", "Spring Boot", "Jenkins", "Nexus"],
       },
       {
@@ -75,7 +75,7 @@ const es = {
         place: "En remoto",
         period: "ene 2025 — feb 2026",
         description:
-          "Migración a Azure de las APIs de open banking, panel de administración y envío de ficheros bancarios, en producción desde diciembre de 2025. Azure Functions, pipelines de despliegue y servicios de intercambio de ficheros bancarios.",
+          "Migré a Azure varias APIs bancarias (open banking, panel de administración y envío de ficheros) y las puse en producción en diciembre de 2025.",
         stack: [".NET Core", "Entity Framework", "Azure"],
       },
       {
@@ -84,7 +84,7 @@ const es = {
         place: "Alicante · Híbrido",
         period: "ene 2023 — dic 2024",
         description:
-          "ERP web basado en building blocks reutilizables, API de generación de informes, facturación electrónica con firma mediante certificado y automatización del correo. Análisis de requisitos, implementación y atención al cliente.",
+          "Desarrollé un ERP web, una API de informes, facturación electrónica y automatización del correo. Participé desde el análisis hasta la atención al cliente.",
         stack: ["Angular", ".NET", "Spring Boot", "Docker"],
       },
       {
@@ -93,51 +93,53 @@ const es = {
         place: "San Vicente del Raspeig",
         period: "jun 2022 — dic 2022",
         description:
-          "Soporte informático en una fábrica de 20.000 m² con más de 150 trabajadores y desarrollo de una solución centralizada para registrar el picado automático de códigos.",
+          "Soporte informático en una fábrica de más de 150 trabajadores. También desarrollé una aplicación para registrar la lectura de códigos.",
         stack: ["Windows", "LAN/WAN", "Active Directory"],
       },
     ],
   },
   projects: {
     title: "Proyectos",
-    intro: "Lo que he construido, agrupado por empresa.",
+    intro: "Lo que he construido, por empresa.",
     source: "Ver código",
+    problem: "Problema",
+    solution: "Solución",
     groups: [
       {
         id: "gs",
         tab: "GS Gestión",
         company: "GS Gestión Fintech Apps",
         period: "2025 — 2026",
-        note: "APIs .NET por capas (API, Data y Test) migradas a Azure y puestas en producción en diciembre de 2025.",
+        note: "APIs .NET migradas a Azure y en producción desde diciembre de 2025.",
         items: [
           {
             title: "OpenBanking API",
-            description:
-              "API de comunicación bancaria que centraliza los datos de open banking. Consultas OData sobre Entity Framework y migraciones de esquema gestionadas por código.",
+            problem: "La API de open banking seguía en la infraestructura antigua y había que llevarla a la nube.",
+            solution: "La migré a .NET en Azure, con consultas OData y migraciones de base de datos desde el código.",
             stack: [".NET Core", "Entity Framework", "OData", "Azure"],
           },
           {
             title: "PanelAdmin API",
-            description:
-              "Backend del panel de administración de productos de clientes, con autorización por scopes e integración con OpenBanking API.",
+            problem: "El panel de administración de clientes necesitaba un backend en Azure con permisos más finos.",
+            solution: "Migré la API y la protegí con autorización por scopes. Se alimenta de OpenBanking API.",
             stack: [".NET Core", "OData", "Azure"],
           },
           {
             title: "BankFileSender API",
-            description:
-              "API para el envío de ficheros bancarios, que delega las notificaciones por correo en una librería compartida.",
+            problem: "Había que enviar ficheros a los bancos y avisar por correo de cada envío.",
+            solution: "Una API en Azure que envía los ficheros y delega los avisos en una librería de correo compartida.",
             stack: [".NET Core", "Azure"],
           },
           {
             title: "Azure Functions",
-            description:
-              "Funciones para tareas concretas: un bróker que consume una cola de correos y los envía, la sincronización de referencias y divisas, y el traspaso de datos para el lector de PDF.",
+            problem: "Tareas pequeñas y recurrentes que no justificaban una API propia.",
+            solution: "Funciones independientes: un bróker que envía correos desde una cola, la sincronización de divisas y el traspaso de datos.",
             stack: ["Azure Functions", "Azure Pipelines", ".NET"],
           },
           {
             title: "Servicios bancarios",
-            description:
-              "Migración del servicio de intercambio de ficheros bancarios EDITRAN y de un gestor de automatizaciones web.",
+            problem: "El intercambio de ficheros con los bancos (EDITRAN) y un gestor de automatizaciones web seguían en la plataforma antigua.",
+            solution: "Migré los dos servicios. EDITRAN está en producción desde diciembre de 2025.",
             stack: [".NET", "EDITRAN"],
           },
         ],
@@ -147,42 +149,42 @@ const es = {
         tab: "Akra",
         company: "Akra Informática",
         period: "2023 — 2024",
-        note: "Software de gestión y facturación para pymes, desde el análisis de requisitos hasta la atención al cliente.",
+        note: "Software de gestión y facturación para pymes.",
         items: [
           {
             title: "SGIWeb",
-            description:
-              "ERP web construido sobre building blocks reutilizables: los mismos componentes sirven para editar datos en formularios in-line o en modales.",
+            problem: "Cada pantalla del ERP repetía la misma lógica para editar datos, ya fuera en formularios o en modales.",
+            solution: "Diseñé una base de componentes reutilizables: la misma pieza sirve para editar en línea o en un modal.",
             stack: ["Angular", ".NET", "Docker"],
           },
           {
             title: "API de informes",
-            description:
-              "API que interopera con el ERP para generar informes en PDF, Excel o el formato que se necesite.",
+            problem: "El ERP necesitaba sacar informes en distintos formatos.",
+            solution: "Una API con Spring Boot y JasperReports que genera informes en PDF, Excel o lo que haga falta.",
             stack: ["Spring Boot", "JasperReports", "Docker"],
           },
           {
             title: "AkraFACe",
-            description:
-              "Consume los datos de los programas de facturación y genera facturas electrónicas en formato FACe, con firma mediante certificado electrónico.",
+            problem: "Quien factura a la Administración tiene que enviar facturas electrónicas firmadas a través de FACe.",
+            solution: "Una aplicación que toma los datos del programa de facturación, genera la factura FACe y la firma con certificado digital.",
             stack: ["WinForms", ".NET"],
           },
           {
             title: "AkraVeriFactu",
-            description:
-              "Gestión y presentación de registros de facturación conforme a la normativa VeriFactu de la Agencia Tributaria.",
+            problem: "VeriFactu obliga al software de facturación a generar registros y enviarlos a la Agencia Tributaria.",
+            solution: "Una plataforma que gestiona esos registros y los presenta, para que los clientes cumplan sin complicaciones.",
             stack: [".NET"],
           },
           {
             title: "MailManager",
-            description:
-              "Servicio de Windows multiinstancia que lee el correo de Outlook con un token de Microsoft Entra ID, responde automáticamente mediante plantillas y registra cada respuesta.",
+            problem: "Responder a mano correos repetitivos consumía mucho tiempo.",
+            solution: "Un servicio de Windows que lee el correo de Outlook, responde con plantillas y registra cada respuesta.",
             stack: [".NET", "Entra ID"],
           },
           {
             title: "Módulos a medida",
-            description:
-              "Un calendario estilo Google Calendar y Keep que replica su algoritmo de colocación de eventos, y la sincronización de TPV con un servidor central para recalcular el stock.",
+            problem: "Aplicaciones ya en producción necesitaban una agenda y un stock fiable entre puntos de venta.",
+            solution: "Un calendario que coloca los eventos como Google Calendar y una sincronización de TPV con el servidor central para recalcular el stock.",
             stack: ["Visual Basic", "C#"],
           },
         ],
@@ -192,19 +194,19 @@ const es = {
         tab: "Personal",
         company: "Personal",
         period: "",
-        note: "Proyectos propios y académicos.",
+        note: "Proyectos propios y de la universidad.",
         items: [
           {
             title: "Este portfolio",
-            description:
-              "Web estática bilingüe con modo claro y oscuro, animaciones accesibles y despliegue continuo en GitHub Pages.",
+            problem: "Quería una web propia para enseñar mi trabajo y aprender SEO con un caso real.",
+            solution: "Esta web: hecha con Astro, bilingüe, con modo claro y oscuro y publicada automáticamente en GitHub Pages.",
             stack: ["Astro", "Tailwind CSS", "TypeScript"],
             href: "https://github.com/franferrandez/franferrandez.github.io",
           },
           {
             title: "GAN · TFG",
-            description:
-              "Scripts y notebooks de mi Trabajo de Fin de Grado en la Universidad de Alicante sobre redes generativas antagónicas.",
+            problem: "Mi Trabajo de Fin de Grado consistía en entender y entrenar redes generativas antagónicas (GAN).",
+            solution: "Scripts y notebooks en Python con los experimentos que hice en la Universidad de Alicante.",
             stack: ["Python", "Jupyter"],
             href: "https://github.com/franferrandez/GAN-TFG",
           },
@@ -214,25 +216,25 @@ const es = {
   },
   stack: {
     title: "Stack",
-    intro: "Mis competencias técnicas y el nivel que tengo en cada una.",
+    intro: "Tecnologías que uso y el nivel que tengo en cada una.",
     now: { label: "Ahora en la GISS", items: ["Java", "Spring Boot", "Jenkins", "Nexus"] },
     groups: {
       languages: "Lenguajes",
       frameworks: "Frameworks",
       databases: "Bases de datos",
-      cloud: "Cloud y arquitecturas",
+      cloud: "Cloud y APIs",
       tools: "Herramientas",
       os: "Sistemas operativos",
     },
     levels: [
-      { name: "Básico", text: "Conocimientos teóricos y académicos, puestos en práctica en la universidad." },
-      { name: "Medio", text: "Experiencia práctica en proyectos pequeños o personales." },
-      { name: "Alto", text: "Experiencia probada en proyectos grandes." },
+      { name: "Básico", text: "Lo conozco de la universidad." },
+      { name: "Medio", text: "Lo he usado en proyectos pequeños o personales." },
+      { name: "Alto", text: "Lo he usado en proyectos grandes." },
     ],
   },
   contact: {
     title: "¿Hablamos?",
-    text: "Siempre abierto a conversar sobre backend, automatización o cualquier proyecto interesante.",
+    text: "¿Tienes un proyecto en mente o quieres hablar de backend y automatización? Escríbeme.",
     cta: "Escríbeme",
     copy: "Copiar email",
     copied: "¡Copiado!",
@@ -250,7 +252,7 @@ const en: Content = {
   meta: {
     title: "Francisco Ferrández · Software engineer",
     description:
-      "Portfolio of Francisco Ferrández: software engineer focused on backend (.NET, Spring Boot) and CI/CD pipelines.",
+      "Francisco Ferrández, software engineer in Castellón, Spain. I build backends with Java, Spring Boot and .NET, and automate deployments.",
   },
   seo: {
     jobTitle: "Software analyst",
@@ -277,17 +279,17 @@ const en: Content = {
     eyebrow: "Software engineer · Castellón, Spain",
     role: "Backend & CI/CD",
     tagline:
-      "I build backend services with .NET and Spring Boot and automate their path to production with continuous integration and delivery pipelines.",
-    status: "Software analyst · GISS (Spanish Social Security IT)",
+      "I build backend services with Java and .NET, and automate how they get to production.",
+    status: "Software analyst at GISS",
     ctaPrimary: "Get in touch",
     ctaSecondary: "See experience",
   },
   about: {
     title: "About",
     paragraphs: [
-      "I hold a degree in Computer Engineering from the University of Alicante and I'm passionate about software development and process automation: any repetitive task is a candidate to become a script or a pipeline.",
-      "I've worked in industrial IT support, full stack development with Angular and .NET, and cloud backend development on Azure. Since June 2026 I've been a software analyst at the Gerencia Informática de la Seguridad Social (GISS), the Spanish Social Security IT agency, in Castellón, after passing the public examination for Systems & IT Management.",
-      "I consider myself proactive, communicative and curious. I enjoy working in teams and learning something new on every project.",
+      "I studied Computer Engineering at the University of Alicante. I love building software and, above all, automating: if something repeats, I end up turning it into a script.",
+      "I started in IT support at a factory, moved to full stack development with Angular and .NET, and then to backend work on Azure. Since June 2026 I've been a software analyst at GISS, the Spanish Social Security IT agency, in Castellón, after passing the civil service exam.",
+      "I'm proactive, communicative and curious. I enjoy working in teams and learning something new on every project.",
     ],
     facts: [
       { label: "Experience", value: "4+ years" },
@@ -305,7 +307,7 @@ const en: Content = {
         place: "Provincial IT Unit · Castellón",
         period: "Jun 2026 — present",
         description:
-          "Backend services with Spring Boot and management of continuous integration and delivery pipelines with Jenkins and Nexus.",
+          "I build services with Spring Boot and maintain the CI/CD pipelines with Jenkins and Nexus.",
         stack: ["Java", "Spring Boot", "Jenkins", "Nexus"],
       },
       {
@@ -314,7 +316,7 @@ const en: Content = {
         place: "Remote",
         period: "Jan 2025 — Feb 2026",
         description:
-          "Migrated the open banking, admin panel and bank file APIs to Azure, live in production since December 2025. Azure Functions, deployment pipelines and bank file exchange services.",
+          "I moved several banking APIs to Azure (open banking, admin panel and file transfers) and took them to production in December 2025.",
         stack: [".NET Core", "Entity Framework", "Azure"],
       },
       {
@@ -323,7 +325,7 @@ const en: Content = {
         place: "Alicante · Hybrid",
         period: "Jan 2023 — Dec 2024",
         description:
-          "A web ERP built on reusable building blocks, a reporting API, e-invoicing with digital certificate signing and email automation. Requirements analysis, implementation and customer support.",
+          "I built a web ERP, a reporting API, e-invoicing tools and email automation, from analysis to customer support.",
         stack: ["Angular", ".NET", "Spring Boot", "Docker"],
       },
       {
@@ -332,51 +334,53 @@ const en: Content = {
         place: "San Vicente del Raspeig",
         period: "Jun 2022 — Dec 2022",
         description:
-          "IT support for a 20,000 m² factory with over 150 workers, plus a centralised solution to log automatic code scanning.",
+          "IT support at a factory with over 150 workers. I also built an app to log barcode scans.",
         stack: ["Windows", "LAN/WAN", "Active Directory"],
       },
     ],
   },
   projects: {
     title: "Projects",
-    intro: "What I've built, grouped by company.",
+    intro: "What I've built, by company.",
     source: "View code",
+    problem: "Problem",
+    solution: "Solution",
     groups: [
       {
         id: "gs",
         tab: "GS Gestión",
         company: "GS Gestión Fintech Apps",
         period: "2025 — 2026",
-        note: "Layered .NET APIs (API, Data and Test) migrated to Azure and released to production in December 2025.",
+        note: ".NET APIs moved to Azure and live since December 2025.",
         items: [
           {
             title: "OpenBanking API",
-            description:
-              "Banking communication API that centralises open banking data. OData queries over Entity Framework and code-first schema migrations.",
+            problem: "The open banking API was still on the old infrastructure and had to move to the cloud.",
+            solution: "I migrated it to .NET on Azure, with OData queries and code-first database migrations.",
             stack: [".NET Core", "Entity Framework", "OData", "Azure"],
           },
           {
             title: "PanelAdmin API",
-            description:
-              "Backend for the customer products admin panel, with scope-based authorisation and integration with OpenBanking API.",
+            problem: "The customer admin panel needed an Azure backend with finer-grained permissions.",
+            solution: "I migrated the API and secured it with scope-based authorisation. It's fed by OpenBanking API.",
             stack: [".NET Core", "OData", "Azure"],
           },
           {
             title: "BankFileSender API",
-            description:
-              "API for sending bank files, delegating email notifications to a shared library.",
+            problem: "Files had to be sent to banks, with an email notification for each one.",
+            solution: "An Azure API that sends the files and hands notifications off to a shared email library.",
             stack: [".NET Core", "Azure"],
           },
           {
             title: "Azure Functions",
-            description:
-              "Single-purpose functions: a broker that consumes an email queue and sends the messages, reference and currency sync, and data hand-off for the PDF reader.",
+            problem: "Small recurring jobs that didn't justify an API of their own.",
+            solution: "Standalone functions: a broker that sends emails from a queue, currency syncing and data hand-off.",
             stack: ["Azure Functions", "Azure Pipelines", ".NET"],
           },
           {
             title: "Banking services",
-            description:
-              "Migration of the EDITRAN bank file exchange service and of a web automation manager.",
+            problem: "The bank file exchange (EDITRAN) and a web automation manager were still on the old platform.",
+            solution: "I migrated both services. EDITRAN has been in production since December 2025.",
             stack: [".NET", "EDITRAN"],
           },
         ],
@@ -386,42 +390,42 @@ const en: Content = {
         tab: "Akra",
         company: "Akra Informática",
         period: "2023 — 2024",
-        note: "Business management and invoicing software for SMEs, from requirements analysis to customer support.",
+        note: "Business and invoicing software for small companies.",
         items: [
           {
             title: "SGIWeb",
-            description:
-              "Web ERP built on reusable building blocks: the same components handle data editing both in inline forms and in modals.",
+            problem: "Every ERP screen repeated the same data editing logic, whether in forms or in modals.",
+            solution: "I designed a set of reusable components: the same piece handles inline and modal editing.",
             stack: ["Angular", ".NET", "Docker"],
           },
           {
             title: "Reporting API",
-            description:
-              "API that interoperates with the ERP to generate reports as PDF, Excel or whatever format is needed.",
+            problem: "The ERP needed reports in several formats.",
+            solution: "A Spring Boot and JasperReports API that produces reports as PDF, Excel or whatever is needed.",
             stack: ["Spring Boot", "JasperReports", "Docker"],
           },
           {
             title: "AkraFACe",
-            description:
-              "Reads data from the invoicing software and generates FACe electronic invoices, signed with a digital certificate.",
+            problem: "Anyone invoicing the Spanish public sector must submit signed e-invoices through FACe.",
+            solution: "An app that takes data from the invoicing software, creates the FACe invoice and signs it with a digital certificate.",
             stack: ["WinForms", ".NET"],
           },
           {
             title: "AkraVeriFactu",
-            description:
-              "Management and submission of invoicing records in compliance with the Spanish Tax Agency's VeriFactu regulation.",
+            problem: "Spain's VeriFactu rules require invoicing software to create records and send them to the Tax Agency.",
+            solution: "A platform that manages and submits those records, so customers stay compliant without hassle.",
             stack: [".NET"],
           },
           {
             title: "MailManager",
-            description:
-              "Multi-instance Windows service that reads Outlook mail with a Microsoft Entra ID token, replies automatically from templates and logs every reply.",
+            problem: "Answering repetitive emails by hand took a lot of time.",
+            solution: "A Windows service that reads Outlook mail, replies from templates and logs every reply.",
             stack: [".NET", "Entra ID"],
           },
           {
             title: "Custom modules",
-            description:
-              "A Google Calendar and Keep style calendar that replicates its event layout algorithm, and POS sync with a central server to recalculate stock.",
+            problem: "Apps already in production needed a calendar and reliable stock across points of sale.",
+            solution: "A calendar that lays out events like Google Calendar, and a POS sync with the central server to recalculate stock.",
             stack: ["Visual Basic", "C#"],
           },
         ],
@@ -431,19 +435,19 @@ const en: Content = {
         tab: "Personal",
         company: "Personal",
         period: "",
-        note: "Personal and academic projects.",
+        note: "Side projects and university work.",
         items: [
           {
             title: "This portfolio",
-            description:
-              "Bilingual static site with light and dark themes, accessible animations and continuous deployment to GitHub Pages.",
+            problem: "I wanted my own site to show my work and learn SEO on a real case.",
+            solution: "This site: built with Astro, bilingual, with light and dark themes and deployed automatically to GitHub Pages.",
             stack: ["Astro", "Tailwind CSS", "TypeScript"],
             href: "https://github.com/franferrandez/franferrandez.github.io",
           },
           {
             title: "GAN · Thesis",
-            description:
-              "Scripts and notebooks from my Bachelor's thesis at the University of Alicante on generative adversarial networks.",
+            problem: "My Bachelor's thesis was about understanding and training generative adversarial networks (GANs).",
+            solution: "Python scripts and notebooks with the experiments I ran at the University of Alicante.",
             stack: ["Python", "Jupyter"],
             href: "https://github.com/franferrandez/GAN-TFG",
           },
@@ -453,25 +457,25 @@ const en: Content = {
   },
   stack: {
     title: "Stack",
-    intro: "My technical skills and my level in each one.",
+    intro: "The tools I use and how well I know each one.",
     now: { label: "Currently at GISS", items: ["Java", "Spring Boot", "Jenkins", "Nexus"] },
     groups: {
       languages: "Languages",
       frameworks: "Frameworks",
       databases: "Databases",
-      cloud: "Cloud & architectures",
+      cloud: "Cloud & APIs",
       tools: "Tools",
       os: "Operating systems",
     },
     levels: [
-      { name: "Basic", text: "Theoretical and academic knowledge, put into practice at university." },
-      { name: "Intermediate", text: "Hands-on experience in small or personal projects." },
-      { name: "Advanced", text: "Proven experience in large projects." },
+      { name: "Basic", text: "I know it from university." },
+      { name: "Intermediate", text: "I've used it in small or personal projects." },
+      { name: "Advanced", text: "I've used it in large projects." },
     ],
   },
   contact: {
     title: "Let's talk",
-    text: "Always happy to chat about backend, automation or any interesting project.",
+    text: "Got a project in mind or want to talk backend and automation? Drop me a line.",
     cta: "Email me",
     copy: "Copy email",
     copied: "Copied!",
@@ -499,7 +503,7 @@ export const skills: { group: keyof Content["stack"]["groups"]; items: [string, 
 
 export const analytics = {
   // Token público de Cloudflare Web Analytics (vacío = desactivado)
-  cloudflareToken: "",
+  cloudflareToken: "9b5cb1522f774359be90e0ac54f6aed6",
 };
 
 export const profile = {
