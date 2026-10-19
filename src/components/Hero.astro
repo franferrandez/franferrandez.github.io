@@ -6,6 +6,7 @@ import { profile } from "@i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const { hero } = useContent(lang);
 const [first, ...rest] = profile.name.split(" ");
+const lines = [first, rest.join(" ")];
 ---
 
 <section id="top" class="relative isolate overflow-hidden">
@@ -13,27 +14,33 @@ const [first, ...rest] = profile.name.split(" ");
   <div class="hero-glow pointer-events-none absolute -z-10" aria-hidden="true"></div>
 
   <div class="mx-auto flex min-h-[100svh] max-w-page flex-col justify-center px-5 pb-20 pt-28 md:px-8">
-    <p class="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted md:text-sm" data-reveal>
+    <p class="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted md:text-sm" data-reveal data-after-type="start">
       {hero.eyebrow}
     </p>
 
     <h1
+      id="hero-name"
       class="text-[clamp(3rem,11vw,8.5rem)] font-bold leading-[0.9] tracking-[-0.04em]"
-      data-reveal
-      style="--delay:80ms"
+      aria-label={profile.name}
     >
-      {first}<br /><span class="text-muted/60">{rest.join(" ")}</span>
+      {
+        lines.map((line, i) => (
+          <span class:list={["block", i > 0 && "text-muted/60"]} aria-hidden="true">
+            {[...line].map((ch) => <span class="ch">{ch}</span>)}
+          </span>
+        ))
+      }
     </h1>
 
     <div class="mt-10 grid gap-8 md:mt-14 md:grid-cols-[1fr_auto] md:items-end">
-      <div data-reveal style="--delay:160ms">
+      <div data-reveal data-after-type style="--delay:0ms">
         <p class="text-2xl font-semibold tracking-tight md:text-3xl">
           {hero.role}<span class="text-accent">.</span>
         </p>
         <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">{hero.tagline}</p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-3" data-reveal style="--delay:240ms">
+      <div class="flex flex-wrap items-center gap-3" data-reveal data-after-type style="--delay:100ms">
         <a
           href="#contact"
           class="group inline-flex items-center gap-2 rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
@@ -57,7 +64,8 @@ const [first, ...rest] = profile.name.split(" ");
     <div
       class="mt-16 inline-flex w-fit items-center gap-3 rounded-full border border-line bg-surface/60 px-4 py-2 text-xs text-muted backdrop-blur md:mt-20 md:text-sm"
       data-reveal
-      style="--delay:320ms"
+      data-after-type
+      style="--delay:200ms"
     >
       <span class="relative flex h-2 w-2">
         <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:hidden"></span>
@@ -69,6 +77,40 @@ const [first, ...rest] = profile.name.split(" ");
 </section>
 
 <style>
+  /* Máquina de escribir: el <head> activa html.typing; si el JS fallara, las letras aparecen solas a los 8 s */
+  :global(html.typing) #hero-name .ch:not(.on) {
+    opacity: 0;
+    animation: failsafe 0s 8s forwards;
+  }
+  @keyframes failsafe {
+    to {
+      opacity: 1;
+    }
+  }
+
+  #hero-name :global(.caret) {
+    display: inline-block;
+    width: 0.07em;
+    height: 0.78em;
+    margin-left: 0.04em;
+    vertical-align: -0.02em;
+    border-radius: 2px;
+    background: rgb(var(--accent));
+    transition: opacity 0.4s ease;
+  }
+  #hero-name :global(.caret.blink) {
+    animation: blink 1s steps(1) infinite;
+  }
+  #hero-name :global(.caret.gone) {
+    animation: none;
+    opacity: 0;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
   .hero-grid {
     background-image:
       linear-gradient(rgb(var(--line) / 0.7) 1px, transparent 1px),
@@ -116,3 +158,60 @@ const [first, ...rest] = profile.name.split(" ");
     background-color: rgb(var(--line) / 0.6);
   }
 </style>
+
+<script>
+  const root = document.documentElement;
+  const name = document.getElementById("hero-name")!;
+  const chars = [...name.querySelectorAll<HTMLElement>(".ch")];
+  const showAfter = (when: "start" | "end") => {
+    const sel = when === "start" ? '[data-after-type="start"]' : '[data-after-type=""]';
+    document.querySelectorAll(`#top ${sel}`).forEach((el) => el.classList.add("is-visible"));
+  };
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  async function type() {
+    showAfter("start");
+    const caret = document.createElement("span");
+    caret.className = "caret";
+    caret.setAttribute("aria-hidden", "true");
+    chars[0].before(caret);
+    await wait(350);
+
+    for (let i = 0; i < chars.length; i++) {
+      const ch = chars[i];
+      ch.classList.add("on");
+      ch.after(caret);
+      // Pausa al saltar de línea y ritmo irregular, como una máquina de verdad
+      const nextLine = chars[i + 1] && chars[i + 1].parentElement !== ch.parentElement;
+      await wait(nextLine ? 320 : 55 + Math.random() * 70);
+    }
+
+    caret.classList.add("blink");
+    root.classList.remove("typing");
+    showAfter("end");
+    await wait(2600);
+    caret.classList.add("gone");
+    await wait(450);
+    caret.remove();
+  }
+
+  if (reduced || !root.classList.contains("typing")) {
+    showAfter("start");
+    showAfter("end");
+  } else {
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      type();
+    };
+    if (root.classList.contains("intro")) {
+      window.addEventListener("intro:done", start, { once: true });
+      setTimeout(start, 3500);
+    } else {
+      start();
+    }
+  }
+</script>
