@@ -45,7 +45,6 @@ const es = {
   },
   about: {
     title: "Sobre mí",
-    photoAlt: "Retrato de Francisco Ferrández sonriendo, con camisa azul claro",
     paragraphs: [
       "Soy ingeniero informático por la Universidad de Alicante y me apasionan el desarrollo de software y la automatización de procesos: cualquier tarea repetitiva es candidata a convertirse en un script o en un pipeline.",
       "He pasado por el soporte IT en industria, el desarrollo full stack con Angular y .NET y el desarrollo backend en la nube con Azure. Desde junio de 2026 soy analista de software en la Gerencia Informática de la Seguridad Social (GISS) en Castellón, tras aprobar la oposición de Gestión de Sistemas e Informática.",
@@ -285,7 +284,6 @@ const en: Content = {
   },
   about: {
     title: "About",
-    photoAlt: "Portrait of Francisco Ferrández smiling, wearing a light blue shirt",
     paragraphs: [
       "I hold a degree in Computer Engineering from the University of Alicante and I'm passionate about software development and process automation: any repetitive task is a candidate to become a script or a pipeline.",
       "I've worked in industrial IT support, full stack development with Angular and .NET, and cloud backend development on Azure. Since June 2026 I've been a software analyst at the Gerencia Informática de la Seguridad Social (GISS), the Spanish Social Security IT agency, in Castellón, after passing the public examination for Systems & IT Management.",
