@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import SectionHeading from "./SectionHeading.astro";
+import photo from "../assets/francisco.jpg";
 import { getLangFromUrl, useContent } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -20,6 +22,19 @@ const { about } = useContent(lang);
       }
     </div>
 
+    <aside class="order-first flex flex-col gap-6 self-start md:order-none">
+      <figure class="photo relative mx-auto w-full max-w-[18rem] md:max-w-none" data-reveal>
+        <Image
+          src={photo}
+          alt={about.photoAlt}
+          widths={[288, 360]}
+          sizes="(min-width: 768px) 360px, 288px"
+          class="aspect-[4/5] w-full rounded-2xl border border-line object-cover"
+          loading="lazy"
+        />
+        <span class="photo-corner" aria-hidden="true"></span>
+      </figure>
+
     <dl class="grid grid-cols-2 gap-px self-start overflow-hidden rounded-2xl border border-line bg-line">
       {
         about.facts.map((fact, i) => (
@@ -30,5 +45,37 @@ const { about } = useContent(lang);
         ))
       }
     </dl>
+    </aside>
   </div>
 </section>
+
+<style>
+  /* La foto entra en blanco y negro y se colorea, como el logo de la intro */
+  .photo img {
+    filter: grayscale(1) contrast(1.05);
+    transition:
+      filter 1.4s ease 0.5s,
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .photo.is-visible img {
+    filter: none;
+  }
+  .photo:hover img {
+    transform: scale(1.015);
+  }
+  :global(html:not(.js)) .photo img {
+    filter: none;
+  }
+
+  .photo-corner {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 64px;
+    height: 64px;
+    border-right: 2px solid rgb(var(--accent));
+    border-bottom: 2px solid rgb(var(--accent));
+    border-bottom-right-radius: 1.25rem;
+    pointer-events: none;
+  }
+</style>

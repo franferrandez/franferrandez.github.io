@@ -1,0 +1,17 @@
+---
+import { analytics } from "@i18n/ui";
+
+// Cloudflare Web Analytics: sin cookies, así que no necesita banner de consentimiento
+const token = analytics.cloudflareToken;
+---
+
+{
+  token && (
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={JSON.stringify({ token })}
+    />
+  )
+}

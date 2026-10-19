@@ -15,7 +15,7 @@ export default {
 				accent: token('accent'),
 			},
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
+				sans: ['"Inter Variable"', 'Inter', 'system-ui', 'sans-serif'],
 				mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
 			},
 			maxWidth: {

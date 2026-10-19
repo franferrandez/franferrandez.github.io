@@ -13,6 +13,17 @@ const es = {
     description:
       "Portfolio de Francisco Ferrández: ingeniero informático especializado en backend (.NET, Spring Boot) y pipelines de CI/CD.",
   },
+  seo: {
+    jobTitle: "Analista de software",
+    ogAlt: "Francisco Ferrández · Backend & CI/CD",
+  },
+  notFound: {
+    title: "Página no encontrada · Francisco Ferrández",
+    description: "Esta página no existe.",
+    heading: "Esta página no existe",
+    text: "Puede que el enlace esté mal escrito o que la página se haya movido.",
+    cta: "Volver al inicio",
+  },
   nav: {
     about: "Sobre mí",
     experience: "Experiencia",
@@ -34,6 +45,7 @@ const es = {
   },
   about: {
     title: "Sobre mí",
+    photoAlt: "Retrato de Francisco Ferrández sonriendo, con camisa azul claro",
     paragraphs: [
       "Soy ingeniero informático por la Universidad de Alicante y me apasionan el desarrollo de software y la automatización de procesos: cualquier tarea repetitiva es candidata a convertirse en un script o en un pipeline.",
       "He pasado por el soporte IT en industria, el desarrollo full stack con Angular y .NET y el desarrollo backend en la nube con Azure. Desde junio de 2026 soy analista de software en la Gerencia Informática de la Seguridad Social (GISS) en Castellón, tras aprobar la oposición de Gestión de Sistemas e Informática.",
@@ -241,6 +253,17 @@ const en: Content = {
     description:
       "Portfolio of Francisco Ferrández: software engineer focused on backend (.NET, Spring Boot) and CI/CD pipelines.",
   },
+  seo: {
+    jobTitle: "Software analyst",
+    ogAlt: "Francisco Ferrández · Backend & CI/CD",
+  },
+  notFound: {
+    title: "Page not found · Francisco Ferrández",
+    description: "This page does not exist.",
+    heading: "This page doesn't exist",
+    text: "The link may be mistyped or the page may have moved.",
+    cta: "Back to home",
+  },
   nav: {
     about: "About",
     experience: "Experience",
@@ -262,6 +285,7 @@ const en: Content = {
   },
   about: {
     title: "About",
+    photoAlt: "Portrait of Francisco Ferrández smiling, wearing a light blue shirt",
     paragraphs: [
       "I hold a degree in Computer Engineering from the University of Alicante and I'm passionate about software development and process automation: any repetitive task is a candidate to become a script or a pipeline.",
       "I've worked in industrial IT support, full stack development with Angular and .NET, and cloud backend development on Azure. Since June 2026 I've been a software analyst at the Gerencia Informática de la Seguridad Social (GISS), the Spanish Social Security IT agency, in Castellón, after passing the public examination for Systems & IT Management.",
@@ -474,6 +498,11 @@ export const skills: { group: keyof Content["stack"]["groups"]; items: [string, 
   { group: "tools", items: [["Git", 3], ["Docker", 2], ["Kubernetes", 1]] },
   { group: "os", items: [["Windows", 3], ["Linux", 3], ["macOS", 2]] },
 ];
+
+export const analytics = {
+  // Token público de Cloudflare Web Analytics (vacío = desactivado)
+  cloudflareToken: "",
+};
 
 export const profile = {
   name: "Francisco Ferrández",
